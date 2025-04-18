@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainLogin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8E1F1F"
+    android:backgroundTint="#FCA444"
+    android:padding="24dp">
+
+    <!-- Logo -->
+    <FrameLayout
+        android:id="@+id/logoContainer"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/rounded_input"
+        android:padding="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/banner"
+            />
+    </FrameLayout>
+
+    <!-- Conteneur central stylisé -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/containerCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="24dp"
+        app:cardBackgroundColor="#FFCCA6"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logoContainer">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <EditText
+                android:id="@+id/nomUtilisateur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/rounded_input"
+                android:hint="Nom d'utilisateur"
+                android:inputType="text"
+                android:textColorHint="#80000000"
+                android:padding="12dp" />
+
+            <EditText
+                android:id="@+id/motDePasse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/rounded_input"
+                android:hint="Mot de passe"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:textColorHint="#80000000"
+            android:theme="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox" />
+
+            <Button
+                android:id="@+id/btnSeConnecter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:backgroundTint="#AF2525"
+                android:text="Se connecter"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btnInscrire"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#AE2525"
+                android:text="S'inscrire"
+                android:textColor="#FFFFFF"/>
+
+            <TextView
+                android:id="@+id/motDePasseOublie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:text="Mot de passe oublié ?"
+                android:textColor="#1976D2"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
