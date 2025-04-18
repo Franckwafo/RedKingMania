@@ -93,7 +93,7 @@ public class Session implements Serializable {
         ObserverConstructions observer_constru = new ObserverConstructions(constructions);
         observer_constru.start();
 
-        //TODO coder les adapter et holder item et construction pour l inventaire
+        //TODO coder les adapter et holder item et construction pour l inventaire et creer la table
         modal_shop = new Modal_shop(ctx);
         ImageView img_shop = ((Activity) ctx).findViewById(R.id.img_shop);
         img_shop.setOnClickListener(new View.OnClickListener() {
