@@ -19,13 +19,15 @@ import org.calma.redkingmania.item.type.Item_c;
 import org.calma.redkingmania.modal.Modal_shop;
 import org.calma.redkingmania.observer.ObserverConstructions;
 import org.calma.redkingmania.observer.ObserverItemInventaire;
-import org.calma.redkingmania.recyclerView.Adapter;
+import org.calma.redkingmania.recyclerView.Adapter_construction;
 import org.calma.redkingmania.recyclerView.Adapter_item;
+import org.calma.redkingmania.shop.Article_construction;
+import org.calma.redkingmania.shop.Article_item;
+import org.calma.redkingmania.shop.Shop;
 import org.calma.redkingmania.utils.Controleur;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Timer;
 
 public class Session implements Serializable {
     // Instance unique
@@ -41,9 +43,11 @@ public class Session implements Serializable {
     private Item itemRemoveConstruSelected;
     private Construction removeConstruSelected;
     private Adapter_item adp_item;
-    private Adapter adp;
+    private Adapter_construction adp;
 
     private Modal_shop modal_shop;
+
+    private Shop shop;
 
 
     private Handler handler = new Handler(Looper.getMainLooper());
@@ -76,7 +80,7 @@ public class Session implements Serializable {
 
         RecyclerView r_list = ((Activity) ctx).findViewById(R.id.rc_liste);
         r_list.setLayoutManager(new LinearLayoutManager(ctx));
-        adp = new Adapter(this.constructions);
+        adp = new Adapter_construction(this.constructions);
         r_list.setAdapter(adp);
         /////
         RecyclerView r_list_inventaire = ((Activity) ctx).findViewById(R.id.r_list_inventaire);
@@ -93,15 +97,8 @@ public class Session implements Serializable {
         ObserverConstructions observer_constru = new ObserverConstructions(constructions);
         observer_constru.start();
 
-        //TODO coder les adapter et holder item et construction pour l inventaire et creer la table
-        modal_shop = new Modal_shop(ctx);
-        ImageView img_shop = ((Activity) ctx).findViewById(R.id.img_shop);
-        img_shop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                modal_shop.show_shop();
-            }
-        });
+        Controleur.initBoutique(ctx);
+
     }
 
     public void initCpt(){
@@ -223,12 +220,28 @@ public class Session implements Serializable {
     // Getters/Setters
 
 
+    public Modal_shop getModal_shop() {
+        return modal_shop;
+    }
+
+    public void setModal_shop(Modal_shop modal_shop) {
+        this.modal_shop = modal_shop;
+    }
+
     public Construction getRemoveConstruSelected() {
         return removeConstruSelected;
     }
 
     public void setRemoveConstruSelected(Construction removeConstruSelected) {
         this.removeConstruSelected = removeConstruSelected;
+    }
+
+    public Shop getShop() {
+        return shop;
+    }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
     }
 
     public Item getItemRemoveConstruSelected() {
@@ -243,11 +256,11 @@ public class Session implements Serializable {
         this.adp_item = adp_item;
     }
 
-    public Adapter getAdp() {
+    public Adapter_construction getAdp() {
         return adp;
     }
 
-    public void setAdp(Adapter adp) {
+    public void setAdp(Adapter_construction adp) {
         this.adp = adp;
     }
 

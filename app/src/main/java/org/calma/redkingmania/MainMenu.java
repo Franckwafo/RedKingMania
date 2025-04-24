@@ -8,15 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import org.calma.redkingmania.construction.Chodron;
-import org.calma.redkingmania.construction.Construction;
-import org.calma.redkingmania.item.Item;
-import org.calma.redkingmania.recyclerView.Adapter;
-
-import java.util.ArrayList;
 
 public class MainMenu extends AppCompatActivity {
 

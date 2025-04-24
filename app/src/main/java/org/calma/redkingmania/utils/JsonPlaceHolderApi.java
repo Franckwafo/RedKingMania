@@ -40,4 +40,8 @@ public interface JsonPlaceHolderApi {
     Call<ResultResponse> deleteConstruction(
             @Query("idPropriete") String param1
     );
+
+    @GET("get_shop_data.php")
+    Call<ResultResponse> getShopData();
+
 }

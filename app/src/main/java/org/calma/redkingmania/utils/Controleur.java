@@ -1,17 +1,25 @@
 package org.calma.redkingmania.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import org.calma.redkingmania.MainMenu;
+import org.calma.redkingmania.R;
 import org.calma.redkingmania.Session;
 import org.calma.redkingmania.User;
 import org.calma.redkingmania.bd.AppDatabase;
 import org.calma.redkingmania.bd.TokenSession;
 import org.calma.redkingmania.construction.Construction;
 import org.calma.redkingmania.item.Item;
+import org.calma.redkingmania.modal.Modal_shop;
+import org.calma.redkingmania.shop.Article_construction;
+import org.calma.redkingmania.shop.Article_item;
+import org.calma.redkingmania.shop.Shop;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -41,7 +49,7 @@ public class Controleur {
         AppDatabase db = AppDatabase.getInstance(ctx);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://4w3.202330093.157-245-242-119.cprapid.com/red_king_mania/api/")
+                .baseUrl("https://4w3.202330093.v2.157-245-242-119.cprapid.com/red_king_mania/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -85,7 +93,7 @@ public class Controleur {
         AppDatabase db = AppDatabase.getInstance(ctx);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://4w3.202330093.157-245-242-119.cprapid.com/red_king_mania/api/")
+                .baseUrl("https://4w3.202330093.v2.157-245-242-119.cprapid.com/red_king_mania/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -140,7 +148,7 @@ public class Controleur {
         if (tks!=null){
 
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("https://4w3.202330093.157-245-242-119.cprapid.com/red_king_mania/api/")
+                    .baseUrl("https://4w3.202330093.v2.157-245-242-119.cprapid.com/red_king_mania/api/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
@@ -196,7 +204,7 @@ public class Controleur {
         if (tks!=null){
 
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("https://4w3.202330093.157-245-242-119.cprapid.com/red_king_mania/api/")
+                    .baseUrl("https://4w3.202330093.v2.157-245-242-119.cprapid.com/red_king_mania/api/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
@@ -244,7 +252,7 @@ public class Controleur {
         if (tks!=null){
 
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("https://4w3.202330093.157-245-242-119.cprapid.com/red_king_mania/api/")
+                    .baseUrl("https://4w3.202330093.v2.157-245-242-119.cprapid.com/red_king_mania/api/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
@@ -280,6 +288,59 @@ public class Controleur {
 
         return rslt;
     }
+
+
+    public static void initBoutique(Context ctx) {
+        AppDatabase db = AppDatabase.getInstance(ctx);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://4w3.202330093.v2.157-245-242-119.cprapid.com/red_king_mania/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        JsonPlaceHolderApi api = retrofit.create(JsonPlaceHolderApi.class);
+
+        Call<ResultResponse> call = api.getShopData();
+
+        call.enqueue(new Callback<ResultResponse>() {
+            @Override
+            public void onResponse(Call<ResultResponse> call, Response<ResultResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    ResultResponse result = response.body();
+
+                    if (result.getResult()) {
+                        ArrayList<Article_item> items = Factory.buildShopItems(response.body().getShop_items());
+                        ArrayList<Article_construction> constructions = Factory.buildShopConstructions(response.body().getShop_constructions());
+
+                        Session.getSession().setShop(new Shop(items,constructions));
+
+
+                        Session.getSession().setModal_shop(new Modal_shop(ctx));
+
+                        ImageView img_shop = ((Activity) ctx).findViewById(R.id.img_shop);
+                        img_shop.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Session.getSession().getModal_shop().show_shop();
+                            }
+                        });
+
+                        Toast.makeText(ctx, "Boutique chargée !", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(ctx, result.getmsg(), Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(ctx, "Erreur de réponse de la boutique", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultResponse> call, Throwable t) {
+                Toast.makeText(ctx, "Erreur de communication avec la boutique", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
     public static String getItemTypeFromSuffix(String input) {
 

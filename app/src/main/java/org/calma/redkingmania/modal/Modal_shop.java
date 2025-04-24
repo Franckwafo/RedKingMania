@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.calma.redkingmania.R;
 import org.calma.redkingmania.Session;
-import org.calma.redkingmania.recyclerView.Adapter;
+import org.calma.redkingmania.recyclerView.Adapter_construction;
 import org.calma.redkingmania.recyclerView.Adapter_item;
+import org.calma.redkingmania.recyclerView.Adapter_shop_construction;
+import org.calma.redkingmania.recyclerView.Adapter_shop_item;
 
 public class Modal_shop {
 
@@ -34,15 +36,15 @@ public class Modal_shop {
         switchMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 // Afficher constructions
-                rv.setAdapter(new Adapter(Session.getSession().getConstructions()));
+                rv.setAdapter(new Adapter_shop_construction(Session.getSession().getShop().getConstructionsBoutique()));
             } else {
                 // Afficher items
-                rv.setAdapter(new Adapter_item(Session.getSession().getItems()));
+                rv.setAdapter(new Adapter_shop_item(Session.getSession().getShop().getItemsBoutique()));
             }
         });
 
         // Initialiser avec les items par défaut
-        rv.setAdapter(new Adapter_item(Session.getSession().getItems()));
+        rv.setAdapter(new Adapter_shop_item(Session.getSession().getShop().getItemsBoutique()));
 
         btnAnnuler.setOnClickListener(v -> dialog.dismiss());
 

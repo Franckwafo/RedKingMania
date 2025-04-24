@@ -12,10 +12,10 @@ import org.calma.redkingmania.construction.Construction;
 
 import java.util.ArrayList;
 
-public class Adapter extends RecyclerView.Adapter<Holder> {
+public class Adapter_construction extends RecyclerView.Adapter<Holder> {
     private ArrayList<Construction> data;
 
-    public Adapter(ArrayList<Construction> data) {
+    public Adapter_construction(ArrayList<Construction> data) {
         this.data = data;
     }
 

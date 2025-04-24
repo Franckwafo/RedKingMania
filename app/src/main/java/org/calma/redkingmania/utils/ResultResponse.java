@@ -12,9 +12,28 @@ public class ResultResponse {
     private List<Map<String, Object>> items_sans_construction;
     private List<Map<String, Object>> constructions;
 
+    private List<Map<String, String>> shop_items;
+    private List<Map<String, String>> shop_constructions;
+
     // === Token ===
     public String getToken() {
         return token;
+    }
+
+    public List<Map<String, String>> getShop_items() {
+        return shop_items;
+    }
+
+    public void setShop_items(List<Map<String, String>> shop_items) {
+        this.shop_items = shop_items;
+    }
+
+    public List<Map<String, String>> getShop_constructions() {
+        return shop_constructions;
+    }
+
+    public void setShop_constructions(List<Map<String, String>> shop_constructions) {
+        this.shop_constructions = shop_constructions;
     }
 
     public void setToken(String token) {

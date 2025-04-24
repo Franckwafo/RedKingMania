@@ -12,6 +12,8 @@ import org.calma.redkingmania.item.Item_c_c;
 import org.calma.redkingmania.item.Item_c_p;
 import org.calma.redkingmania.item.Item_e_c;
 import org.calma.redkingmania.item.Item_e_p;
+import org.calma.redkingmania.shop.Article_construction;
+import org.calma.redkingmania.shop.Article_item;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -144,4 +146,34 @@ public class Factory {
         }
         return constructions;
     }
+
+    public static ArrayList<Article_item> buildShopItems(List<Map<String, String>> rawData) {
+        ArrayList<Article_item> articles = new ArrayList<>();
+        for (Map<String, String> data : rawData) {
+            String id = data.get("id");
+            //TODO metre en place le mechanisme de prix
+            String nom = data.get("nom");
+            String type = data.get("type");
+//            int nbProduction = Integer.parseInt(data.get("production"));
+
+            articles.add(new Article_item(id, 100, nom, type, 1));
+        }
+        return articles;
+    }
+
+    public static ArrayList<Article_construction> buildShopConstructions(List<Map<String, String>> rawData) {
+        ArrayList<Article_construction> articles = new ArrayList<>();
+        for (Map<String, String> data : rawData) {
+            String id = data.get("id");
+            String nom = data.get("nom");
+            //TODO metre en place le mechanisme de production possible proble au nivaux des nom des champ
+            String type = data.get("type");
+//            int nbProduction = Integer.parseInt(data.get("production"));
+
+            articles.add(new Article_construction(id, 100, nom, type, 1));
+        }
+        return articles;
+    }
+
+
 }
