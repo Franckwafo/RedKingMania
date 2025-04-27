@@ -1,6 +1,6 @@
 package org.calma.redkingmania.recyclerView;
 
-import static org.calma.redkingmania.utils.Geter_Items_img.get_img_src;
+import static org.calma.redkingmania.utils.Geter_img.get_item_img_src;
 import android.app.Dialog;
 
 import android.graphics.Color;
@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -45,7 +44,7 @@ public abstract class Holder extends RecyclerView.ViewHolder {
         // On s'assure qu'on n'attribue que ce qu'on a (max 4 images)
         for (int i = 0; i < items.size() && i < itemCard.size(); i++) {
             Item currentItem = items.get(i);
-            String imageName = get_img_src(currentItem.getIdItem());
+            String imageName = get_item_img_src(currentItem.getIdItem());
 
             int resId = Session.getSession().getCtx()
                     .getResources()

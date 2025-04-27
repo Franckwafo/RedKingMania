@@ -15,6 +15,16 @@ public class ResultResponse {
     private List<Map<String, String>> shop_items;
     private List<Map<String, String>> shop_constructions;
 
+    private String idPropriete;
+
+    public String getIdPropriete() {
+        return idPropriete;
+    }
+
+    public void setIdPropriete(String idPropriete) {
+        this.idPropriete = idPropriete;
+    }
+
     // === Token ===
     public String getToken() {
         return token;

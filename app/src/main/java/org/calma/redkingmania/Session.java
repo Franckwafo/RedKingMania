@@ -1,5 +1,5 @@
 package org.calma.redkingmania;
-
+//TODO CLEAN MON CODE
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -308,6 +308,16 @@ public class Session implements Serializable {
         this.items = items;
     }
 
+    public void itemsAdd(Item i){
+        this.items.add(i);
+        adp_item.notifyDataSetChanged();
+    }
+
+    public void constructionsAdd(Construction c){
+        this.constructions.add(c);
+        adp.notifyDataSetChanged();
+    }
+
     public User getUser() {
         return user;
     }
@@ -392,5 +402,12 @@ public class Session implements Serializable {
         Controleur.updateInfo(this.ctx,userStats,"u");
     }
 
+    public void shopItem(Article_item article, String datePeremption){
+        Controleur.shopItem(ctx,article,datePeremption);
+    }
+
+    public void shopConstruction(Article_construction articleConstruction, String datePereption){
+        Controleur.shopConstruction(ctx,articleConstruction,datePereption);
+    }
 
 }

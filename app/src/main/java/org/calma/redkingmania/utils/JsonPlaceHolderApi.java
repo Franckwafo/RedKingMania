@@ -44,4 +44,18 @@ public interface JsonPlaceHolderApi {
     @GET("get_shop_data.php")
     Call<ResultResponse> getShopData();
 
+    @GET("shop_item.php")
+    Call<ResultResponse> addShopItem(
+            @Query("idUser") String idUser,
+            @Query("idItem") String idItem,
+            @Query("datePeremption") String datePeremption
+    );
+
+    @GET("shop_construction.php")
+    Call<ResultResponse> addShopConstruction(
+            @Query("idUser") String idUser,
+            @Query("idConstruction") String idConstruction,
+            @Query("datePeremption") String datePeremption
+    );
+
 }

@@ -1,24 +1,17 @@
 package org.calma.redkingmania.recyclerView;
 
-import static org.calma.redkingmania.utils.Geter_Items_img.get_img_src;
+import static org.calma.redkingmania.utils.Geter_img.get_item_img_src;
 
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.calma.redkingmania.R;
 import org.calma.redkingmania.Session;
-import org.calma.redkingmania.construction.Construction;
 import org.calma.redkingmania.item.Item;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Holder_inventaire extends RecyclerView.ViewHolder{
     private View view;
@@ -43,7 +36,7 @@ public class Holder_inventaire extends RecyclerView.ViewHolder{
 
 
     public void bind(Item i) {
-        String imageName = get_img_src(i.getIdItem());
+        String imageName = get_item_img_src(i.getIdItem());
 
         int resId = Session.getSession().getCtx()
                 .getResources()

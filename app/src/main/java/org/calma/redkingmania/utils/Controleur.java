@@ -341,6 +341,86 @@ public class Controleur {
         });
     }
 
+    public static void shopItem(Context ctx,Article_item articleItem, String datePeremption) {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://4w3.202330093.v2.157-245-242-119.cprapid.com/red_king_mania/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        JsonPlaceHolderApi api = retrofit.create(JsonPlaceHolderApi.class);
+
+
+
+        Call<ResultResponse> call = api.addShopItem(Session.getSession().getUser().getUsername(),articleItem.getId(),datePeremption);
+
+        call.enqueue(new Callback<ResultResponse>() {
+            @Override
+            public void onResponse(Call<ResultResponse> call, Response<ResultResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    ResultResponse result = response.body();
+
+                    if (result.getResult()) {
+                        //
+                        Item i = Factory.buldItem(articleItem,result.getIdPropriete(),datePeremption);
+                        Session.getSession().itemsAdd(i);
+
+                        //
+                    } else {
+                        Toast.makeText(ctx, result.getmsg(), Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(ctx, "Erreur de réponse de la boutique", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultResponse> call, Throwable t) {
+                Toast.makeText(ctx, "Erreur de communication avec la boutique", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+    public static void shopConstruction(Context ctx, Article_construction construction, String datePeremption) {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://4w3.202330093.v2.157-245-242-119.cprapid.com/red_king_mania/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        JsonPlaceHolderApi api = retrofit.create(JsonPlaceHolderApi.class);
+
+        // Appel à l'API pour ajouter une construction
+        Call<ResultResponse> call = api.addShopConstruction(Session.getSession().getUser().getUsername(), construction.getId(), datePeremption);
+
+        call.enqueue(new Callback<ResultResponse>() {
+            @Override
+            public void onResponse(Call<ResultResponse> call, Response<ResultResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    ResultResponse result = response.body();
+
+                    if (result.getResult()) {
+                        // Si la réponse est réussie, crée l'objet Construction et l'ajoute à la session
+                        Construction c = Factory.buildConstruction(construction, result.getIdPropriete(), datePeremption);
+                        Session.getSession().constructionsAdd(c);
+
+                        // Si nécessaire, affiche un message de succès ou effectue d'autres actions
+                    } else {
+                        Toast.makeText(ctx, result.getmsg(), Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(ctx, "Erreur de réponse de la boutique", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultResponse> call, Throwable t) {
+                Toast.makeText(ctx, "Erreur de communication avec la boutique", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
     public static String getItemTypeFromSuffix(String input) {
 

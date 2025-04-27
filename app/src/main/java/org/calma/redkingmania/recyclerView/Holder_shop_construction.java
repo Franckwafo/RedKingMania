@@ -1,10 +1,15 @@
 package org.calma.redkingmania.recyclerView;
 
+import static org.calma.redkingmania.utils.Geter_img.get_construction_img_src;
+import static org.calma.redkingmania.utils.Geter_img.get_item_img_src;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import org.calma.redkingmania.R;
+import org.calma.redkingmania.Session;
 import org.calma.redkingmania.shop.Article_construction;
 import org.calma.redkingmania.shop.Article_shop;
 
@@ -30,6 +35,19 @@ public class Holder_shop_construction extends RecyclerView.ViewHolder {
 
         // Image statique ici, tu peux adapter si tes articles ont une image personnalisée
         itemImage.setImageResource(R.drawable.bg_erable);
+        /////////////
+        String imageName = get_construction_img_src(article.getId());
+
+        int resId = Session.getSession().getCtx()
+                .getResources()
+                .getIdentifier(imageName, "drawable", Session.getSession().getCtx().getPackageName());
+
+        if (resId != 0) {
+            itemImage.setImageResource(resId);
+        } else {
+            Log.e("Image Load", "Image non trouvée pour l'ID : " + imageName);
+        }
+        ///////////
         unite.setImageResource(R.drawable.cristale);
 
         itemView.setOnLongClickListener(v -> {

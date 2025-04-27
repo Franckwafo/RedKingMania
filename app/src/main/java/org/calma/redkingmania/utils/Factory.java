@@ -16,6 +16,8 @@ import org.calma.redkingmania.shop.Article_construction;
 import org.calma.redkingmania.shop.Article_item;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -78,14 +80,108 @@ public class Factory {
                     break;
             }
 
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
         return item;
     }
+
+
+    public static Item buldItem(Article_item article,String idPropriete, String datePeremption){
+        Item item = null;
+
+        // Format qui correspond à ta chaîne
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        Date dateFormat = null;
+        try {
+            dateFormat = format.parse(datePeremption);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        switch (article.getType()){
+            case "b_c":
+                item = new Item_b_c(article.getId(),idPropriete,article.getNom(),article.getType(),article.getNbProduction(),dateFormat);
+                break;
+            case "b_p":
+                item = new Item_b_p(article.getId(),idPropriete,article.getNom(),article.getType(),article.getNbProduction(),dateFormat);
+                break;
+            case "c_c":
+                item = new Item_c_c(article.getId(),idPropriete,article.getNom(),article.getType(),article.getNbProduction(),dateFormat);
+                break;
+            case "c_p":
+                item = new Item_c_p(article.getId(),idPropriete,article.getNom(),article.getType(),article.getNbProduction(),dateFormat);
+                break;
+            case "e_c":
+                item = new Item_e_c(article.getId(),idPropriete,article.getNom(),article.getType(),article.getNbProduction(),dateFormat);
+                break;
+            case "e_p":
+                item = new Item_e_p(article.getId(),idPropriete,article.getNom(),article.getType(),article.getNbProduction(),dateFormat);
+                break;
+        }
+
+        return item;
+    }
+
+    public static Construction buildConstruction(Article_construction article, String idPropriete, String datePeremption) {
+        Construction construction = null;
+
+        // Format qui correspond à la chaîne de date
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        ArrayList<Item> items = new ArrayList<Item>();
+
+        Date dateFormat = null;
+        try {
+            dateFormat = format.parse(datePeremption); // Conversion de la chaîne en Date
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        // Utilisation d'un switch pour créer l'objet construction selon le type
+        switch (article.getType()) {
+            case "e":
+                construction = new Chodron(
+                        article.getId(),                  // idConstruction
+                        article.getNom(),                 // name
+                        idPropriete,                      // idPropriete
+                        article.getType(),                // type
+                        dateFormat,                       // expiration (date d'expiration)
+                        items,                            // items associés à la construction
+                        article.getNbProduction()        // nbProduct
+                );
+                break;
+            case "c":
+                construction = new Mine(
+                        article.getId(),                  // idConstruction
+                        article.getNom(),                 // name
+                        idPropriete,                      // idPropriete
+                        article.getType(),                // type
+                        dateFormat,                       // expiration (date d'expiration)
+                        items,                            // items associés à la construction
+                        article.getNbProduction()        // nbProduct
+                );
+                break;
+            case "b":
+                construction = new Foret(
+                        article.getId(),                  // idConstruction
+                        article.getNom(),                 // name
+                        idPropriete,                      // idPropriete
+                        article.getType(),                // type
+                        dateFormat,                       // expiration (date d'expiration)
+                        items,                            // items associés à la construction
+                        article.getNbProduction()        // nbProduct
+                );
+                break;
+            default:
+                // Si le type de construction n'est pas reconnu, on lance une exception ou on peut gérer autrement
+                throw new IllegalArgumentException("Type de construction inconnu : " + article.getType());
+        }
+
+        return construction;
+    }
+
+
 
     public static ArrayList<Item> buldItems(List<Map<String, Object>> infoItems){
         ArrayList<Item> items = new ArrayList<>();
@@ -150,7 +246,7 @@ public class Factory {
     public static ArrayList<Article_item> buildShopItems(List<Map<String, String>> rawData) {
         ArrayList<Article_item> articles = new ArrayList<>();
         for (Map<String, String> data : rawData) {
-            String id = data.get("id");
+            String id = data.get("idItem");
             //TODO metre en place le mechanisme de prix
             String nom = data.get("nom");
             String type = data.get("type");
@@ -164,7 +260,7 @@ public class Factory {
     public static ArrayList<Article_construction> buildShopConstructions(List<Map<String, String>> rawData) {
         ArrayList<Article_construction> articles = new ArrayList<>();
         for (Map<String, String> data : rawData) {
-            String id = data.get("id");
+            String id = data.get("idConstruction");
             String nom = data.get("nom");
             //TODO metre en place le mechanisme de production possible proble au nivaux des nom des champ
             String type = data.get("type");
