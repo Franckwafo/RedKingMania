@@ -12,6 +12,7 @@ import org.calma.redkingmania.R;
 import org.calma.redkingmania.Session;
 import org.calma.redkingmania.shop.Article_construction;
 import org.calma.redkingmania.shop.Article_shop;
+import org.calma.redkingmania.utils.Controleur;
 
 public class Holder_shop_construction extends RecyclerView.ViewHolder {
     public ImageView itemImage, unite;
@@ -29,9 +30,9 @@ public class Holder_shop_construction extends RecyclerView.ViewHolder {
 
     public void bind(Article_construction article) {
         itemNom.setText(article.getNom());
-        itemType.setText("Type : " + article.getType());
+        itemType.setText("Type : " + Controleur.getConstructionTypeFromSuffix(article.getType()));
         itemEffet.setText("Production : +" + article.getNbProduction());
-        prix.setText(String.valueOf(article.getPrix()));
+        prix.setText(Controleur.formaterPrix(article.getPrix()));
 
         // Image statique ici, tu peux adapter si tes articles ont une image personnalisée
         itemImage.setImageResource(R.drawable.bg_erable);

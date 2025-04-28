@@ -22,11 +22,11 @@ import org.calma.redkingmania.utils.Controleur;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Holder extends RecyclerView.ViewHolder {
+public abstract class Holder_construction extends RecyclerView.ViewHolder {
     protected View view;
 
 
-    public Holder(@NonNull View itemView) {
+    public Holder_construction(@NonNull View itemView) {
         super(itemView);
         this.view = itemView;
     }
@@ -99,6 +99,10 @@ public abstract class Holder extends RecyclerView.ViewHolder {
         txt_type.setText("Type : " + Controleur.getItemTypeFromSuffix(i.getType()));
         TextView txt_effect = dialog.findViewById(R.id.itemEffet);
         txt_effect.setText("Effets : " + Controleur.getItemEffectFromSuffix(i.getType(),i));
+
+        TextView txt_expiration = dialog.findViewById(R.id.expiration);
+        txt_expiration.setText("Valide pour " + Controleur.getTimeLeft(i.getDatePeremption()));
+
         Button button = dialog.findViewById(R.id.btnFermer);
         button.setBackgroundColor(Color.parseColor(Controleur.getColorFromEffect(i.getNbEffet())));
 

@@ -44,7 +44,7 @@ public class Holder_inventaire extends RecyclerView.ViewHolder{
 
         if (resId != 0) {
             img.setImageResource(resId);
-            Holder.setImgClick(i,view,resId);
+            Holder_construction.setImgClick(i,view,resId);
             setLongClickItem(i);
 
         } else {

@@ -12,7 +12,7 @@ import org.calma.redkingmania.construction.Construction;
 
 import java.util.ArrayList;
 
-public class Adapter_construction extends RecyclerView.Adapter<Holder> {
+public class Adapter_construction extends RecyclerView.Adapter<Holder_construction> {
     private ArrayList<Construction> data;
 
     public Adapter_construction(ArrayList<Construction> data) {
@@ -34,9 +34,9 @@ public class Adapter_construction extends RecyclerView.Adapter<Holder> {
 
     @NonNull
     @Override
-    public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Holder_construction onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         int typeChat = 0;
-        Holder holder = null;
+        Holder_construction holderConstruction = null;
 
         switch (viewType){
             case 1:
@@ -55,22 +55,22 @@ public class Adapter_construction extends RecyclerView.Adapter<Holder> {
 
         switch (viewType){
             case 1:
-                holder = new Holder_chodron(v);
+                holderConstruction = new Holder_construction_chodron(v);
                 break;
             case 2:
-                holder = new Holder_foret(v);
+                holderConstruction = new Holder_construction_foret(v);
                 break;
             case 3:
-                holder = new Holder_cristal(v);
+                holderConstruction = new Holder_construction_cristal(v);
                 break;
         }
 
-        return holder;
+        return holderConstruction;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Holder holder, int position) {
-        holder.bind(this.data.get(position));
+    public void onBindViewHolder(@NonNull Holder_construction holderConstruction, int position) {
+        holderConstruction.bind(this.data.get(position));
     }
 
     @Override

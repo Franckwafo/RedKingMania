@@ -27,7 +27,6 @@ public class Modal_shop {
         TextView title = dialog.findViewById(R.id.tv_title);
         Switch switchMode = dialog.findViewById(R.id.switch_mode);
         RecyclerView rv = dialog.findViewById(R.id.rv_elements);
-        Button btnAcheter = dialog.findViewById(R.id.btn_acheter);
         Button btnAnnuler = dialog.findViewById(R.id.btn_annuler);
 
         rv.setLayoutManager(new LinearLayoutManager(context));
@@ -47,11 +46,6 @@ public class Modal_shop {
         rv.setAdapter(new Adapter_shop_item(Session.getSession().getShop().getItemsBoutique()));
 
         btnAnnuler.setOnClickListener(v -> dialog.dismiss());
-
-        btnAcheter.setOnClickListener(v -> {
-            // Logique d'achat ici
-            dialog.dismiss();
-        });
 
 
     }

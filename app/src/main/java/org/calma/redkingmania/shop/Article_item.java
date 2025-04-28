@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import org.calma.redkingmania.R;
 import org.calma.redkingmania.Session;
+import org.calma.redkingmania.utils.Controleur;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -29,18 +30,11 @@ public class Article_item extends Article_shop {
             Session.getSession().getUser().setNbErable(Session.getSession().getUser().getNbErable()-this.prix);
 
             TextView cpt = ((Activity) ctx).findViewById(R.id.cpt_erable);
-            cpt.setText(String.valueOf(Session.getSession().getUser().getNbErable()));
+            cpt.setText(Controleur.formaterPrix(Session.getSession().getUser().getNbErable()));
             Session.getSession().updateUser();
 
-            Date dateAujourdhui = new Date();
 
-            // Utilisation de Calendar pour ajouter un jour
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(dateAujourdhui); // Initialisation avec la date d'aujourd'hui
-            calendar.add(Calendar.DAY_OF_MONTH, 1); // Ajout d'un jour
-
-            // Nouvelle date après l'ajout du jour
-            Date nouvelleDate = calendar.getTime();
+            Date nouvelleDate = Controleur.genererDateExpiration();
 
             // Formater la date en String
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

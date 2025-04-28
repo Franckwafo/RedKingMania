@@ -102,4 +102,5 @@ public abstract class Construction implements Serializable {
 
     public abstract void action(Session s);
     public abstract int getType();
+    public abstract boolean isItemValide(Item item);
 }

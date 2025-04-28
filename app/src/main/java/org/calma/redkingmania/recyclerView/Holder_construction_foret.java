@@ -1,20 +1,15 @@
 package org.calma.redkingmania.recyclerView;
 
-import android.app.Activity;
-import android.content.Context;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import org.calma.redkingmania.R;
 import org.calma.redkingmania.Session;
-import org.calma.redkingmania.construction.Chodron;
 import org.calma.redkingmania.construction.Construction;
 
-public class Holder_cristal extends Holder {
-    public Holder_cristal(@NonNull View itemView) {
+public class Holder_construction_foret extends Holder_construction {
+
+    public Holder_construction_foret(@NonNull View itemView) {
         super(itemView);
     }
 

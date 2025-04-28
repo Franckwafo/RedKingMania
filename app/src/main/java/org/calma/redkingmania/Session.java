@@ -109,9 +109,9 @@ public class Session implements Serializable {
         TextView cpt_b = ((Activity) ctx).findViewById(R.id.cpt_boi);
 
 
-        cpt_e.setText(String.valueOf(this.getUser().getNbErable()));
-        cpt_c.setText(String.valueOf(this.getUser().getNbCristaux()));
-        cpt_b.setText(String.valueOf(this.getUser().getNbBois()));
+        cpt_e.setText(String.valueOf(Controleur.formaterPrix(this.getUser().getNbErable())));
+        cpt_c.setText(String.valueOf(Controleur.formaterPrix(this.getUser().getNbCristaux())));
+        cpt_b.setText(String.valueOf(Controleur.formaterPrix(this.getUser().getNbBois())));
     }
 
     public void initAutoClicker(){
@@ -145,7 +145,7 @@ public class Session implements Serializable {
 
     public void moveItem(){
         if (this.construSelected!=null && this.itemSelected!=null){
-            if (this.construSelected.getItems().size()<4){
+            if (this.construSelected.getItems().size()<4 && construSelected.isItemValide(itemSelected)){
                 Toast.makeText(Session.getSession().getCtx(), this.construSelected.getName(), Toast.LENGTH_SHORT).show();
 
                 this.items.remove(this.itemSelected);
@@ -164,6 +164,12 @@ public class Session implements Serializable {
 
                 updateItems();
                 updateConstructions();
+            }else {
+                Toast.makeText(Session.getSession().getCtx(), "Mouvment impossible", Toast.LENGTH_SHORT).show();
+                this.setItemRemoveConstruSelected(null);
+                this.setRemoveConstruSelected(null);
+                this.setItemSelected(null);
+                this.setConstruSelected(null);
             }
 
         }

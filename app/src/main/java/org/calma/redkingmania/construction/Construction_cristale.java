@@ -7,12 +7,13 @@ import android.widget.TextView;
 import org.calma.redkingmania.R;
 import org.calma.redkingmania.Session;
 import org.calma.redkingmania.item.Item;
+import org.calma.redkingmania.utils.Controleur;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Mine extends Construction{
-    public Mine(String idConstruction, String name, String idPropriete, String type, Date epiration, ArrayList<Item> items, int nbProduct) {
+public class Construction_cristale extends Construction{
+    public Construction_cristale(String idConstruction, String name, String idPropriete, String type, Date epiration, ArrayList<Item> items, int nbProduct) {
         super(idConstruction, name, idPropriete, type, epiration, items, nbProduct);
     }
 
@@ -25,12 +26,21 @@ public class Mine extends Construction{
         s.getUser().setNbCristaux(s.getUser().getNbCristaux()+this.getNbProduct()+nbSup);
 
         TextView cpt = ((Activity) ctx).findViewById(R.id.cpt_cristale);
-        cpt.setText(String.valueOf(s.getUser().getNbCristaux()));
+        cpt.setText(Controleur.formaterPrix(s.getUser().getNbCristaux()));
         Session.getSession().updateUser();
     }
 
     @Override
     public int getType() {
         return 3;
+    }
+
+    @Override
+    public boolean isItemValide(Item item) {
+        boolean valide = false;
+        if (item.getType().charAt(0) == 'c') {
+            valide=true;
+        }
+        return valide;
     }
 }

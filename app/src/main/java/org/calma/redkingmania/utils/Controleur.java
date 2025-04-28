@@ -24,8 +24,11 @@ import org.calma.redkingmania.shop.Shop;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -422,6 +425,20 @@ public class Controleur {
     }
 
 
+    public static String  getConstructionTypeFromSuffix(String input) {
+
+        switch (input) {
+            case "e":
+                return "Erable";
+            case "c":
+                return "Cristale";
+            case "b":
+                return "Bois";
+            default:
+                return "Inconnu";
+        }
+    }
+
     public static String getItemTypeFromSuffix(String input) {
 
         char lastChar = input.charAt(input.length() - 1);
@@ -445,6 +462,20 @@ public class Controleur {
                 return "Ressource + " + i.getNbEffet();
             case 'c':
                 return "Click par " + i.getNbEffet()+ " s";
+            default:
+                return "Inconnu";
+        }
+    }
+
+    public static String getArticleEffectFromSuffix(Article_item a) {
+
+        char lastChar = a.getType().charAt(a.getType().length() - 1);
+
+        switch (lastChar) {
+            case 'p':
+                return "Ressource + " + a.getNbProduction();
+            case 'c':
+                return "Click par " + a.getNbProduction()+ " s";
             default:
                 return "Inconnu";
         }
@@ -488,6 +519,115 @@ public class Controleur {
         return "#FFFFFF";
     }
 
+    public static String getTimeLeft(Date expirationDate) {
+        Date now = new Date();
+        long diffInMillis = expirationDate.getTime() - now.getTime();
 
+        if (diffInMillis <= 0) {
+            return "Expiré";
+        }
+
+        long days = TimeUnit.MILLISECONDS.toDays(diffInMillis);
+        diffInMillis -= TimeUnit.DAYS.toMillis(days);
+
+        long hours = TimeUnit.MILLISECONDS.toHours(diffInMillis);
+        diffInMillis -= TimeUnit.HOURS.toMillis(hours);
+
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(diffInMillis);
+        diffInMillis -= TimeUnit.MINUTES.toMillis(minutes);
+
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(diffInMillis);
+
+        return String.format("%d j, %02d h, %02d min, %02d s", days, hours, minutes, seconds);
+    }
+
+    public static int calculerPrix(int effect, char type) {
+        Random random = new Random();
+        int aleatoire = random.nextInt(10) + 5; // entre 1 et 10
+
+        // Récupère l'heure, minute et seconde
+        Calendar calendar = Calendar.getInstance();
+        int heure = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        int seconde = calendar.get(Calendar.SECOND);
+        int totalTemps = heure + minute + seconde;
+
+        double base;
+
+        if (type == 'c') {
+            // Pour les autoclickers : plus effect est petit, mieux c'est
+            base = Math.pow((120 / (effect + 1)), 4);
+        } else if (type == 'p') {
+            // Pour les producteurs : plus effect est grand, mieux c'est
+            base = Math.pow(effect, 3) * 0.1;
+        }else if (type == 'b') {
+            // Pour les producteurs : plus effect est grand, mieux c'est
+            base = Math.pow(effect, 4) * 0.1;
+        }else {
+            // Type inconnu
+            return 100;
+        }
+
+        // Prix final : base * (aléatoire + temps)
+        double prix = base * (((aleatoire * totalTemps)*(aleatoire * totalTemps)) / 50.0);
+
+        return (int) prix;
+    }
+
+
+    public static String formaterPrix(long prix) {
+        if (prix < 100_000) {
+            return String.valueOf(prix);
+        }
+
+        String[] suffixes = {"", "K", "M", "B", "T"};
+        int suffixIndex = 0;
+        double montant = prix;
+
+        while (montant >= 1000 && suffixIndex < suffixes.length - 1) {
+            montant /= 1000.0;
+            suffixIndex++;
+        }
+
+        // Formater pour avoir au maximum 2 chiffres après la virgule
+        String montantFormate = String.format("%.2f", montant);
+
+        // Supprimer ".00" si c'est un chiffre rond
+        if (montantFormate.endsWith(".00")) {
+            montantFormate = montantFormate.substring(0, montantFormate.length() - 3);
+        }
+
+        return montantFormate + suffixes[suffixIndex];
+    }
+
+    public static Date genererDateExpiration() {
+        Random random = new Random();
+
+        // Récupérer l'heure actuelle
+        Calendar now = Calendar.getInstance();
+        int heure = now.get(Calendar.HOUR_OF_DAY);
+        int minute = now.get(Calendar.MINUTE);
+        int seconde = now.get(Calendar.SECOND);
+
+        // Temps actuel pour influencer le random
+        int influence = (heure * 3600) + (minute * 60) + seconde; // en secondes
+
+        // Ajouter de la variabilité
+        int randomHours = 5 + random.nextInt(44); // 5h à 48h (2 jours = 48h, 48 - 5 = 43 + 1)
+
+        // Influence additionnelle basée sur l'heure actuelle
+        randomHours += (influence % 5); // Influence douce pour éviter de trop casser le random de base
+
+        // Empêcher de dépasser 48 heures (2 jours)
+        if (randomHours > 48) {
+            randomHours = 48;
+        }
+
+        // Créer la date d'expiration
+        Calendar expiration = Calendar.getInstance();
+        expiration.add(Calendar.HOUR_OF_DAY, randomHours);
+
+        return expiration.getTime();
+    }
 
 }

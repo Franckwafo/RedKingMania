@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.calma.redkingmania.R;
 import org.calma.redkingmania.Session;
 import org.calma.redkingmania.shop.Article_item;
+import org.calma.redkingmania.utils.Controleur;
 
 public class Holder_shop_item extends RecyclerView.ViewHolder {
     public ImageView itemImage, unite;
@@ -27,10 +28,10 @@ public class Holder_shop_item extends RecyclerView.ViewHolder {
 
     public void bind(Article_item article) {
         itemNom.setText(article.getNom());
-        itemType.setText("Type : " + article.getType());
+        itemType.setText(Controleur.getItemTypeFromSuffix(article.getType()));
         //TODO changer les image
-        itemEffet.setText("Production : +" + article.getNbProduction());
-        prix.setText(String.valueOf(article.getPrix()));
+        itemEffet.setText(Controleur.getArticleEffectFromSuffix(article));
+        prix.setText(Controleur.formaterPrix(article.getPrix()));
 
         // Image statique ici, tu peux adapter si tes articles ont une image personnalisée
         itemImage.setImageResource(R.drawable.item_cuillere);

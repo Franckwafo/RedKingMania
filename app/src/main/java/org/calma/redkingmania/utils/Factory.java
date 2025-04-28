@@ -1,10 +1,10 @@
 package org.calma.redkingmania.utils;
 
 import org.calma.redkingmania.User;
-import org.calma.redkingmania.construction.Chodron;
+import org.calma.redkingmania.construction.Construction_erable;
 import org.calma.redkingmania.construction.Construction;
-import org.calma.redkingmania.construction.Foret;
-import org.calma.redkingmania.construction.Mine;
+import org.calma.redkingmania.construction.Construction_bois;
+import org.calma.redkingmania.construction.Construction_cristale;
 import org.calma.redkingmania.item.Item;
 import org.calma.redkingmania.item.Item_b_c;
 import org.calma.redkingmania.item.Item_b_p;
@@ -141,7 +141,7 @@ public class Factory {
         // Utilisation d'un switch pour créer l'objet construction selon le type
         switch (article.getType()) {
             case "e":
-                construction = new Chodron(
+                construction = new Construction_erable(
                         article.getId(),                  // idConstruction
                         article.getNom(),                 // name
                         idPropriete,                      // idPropriete
@@ -152,7 +152,7 @@ public class Factory {
                 );
                 break;
             case "c":
-                construction = new Mine(
+                construction = new Construction_cristale(
                         article.getId(),                  // idConstruction
                         article.getNom(),                 // name
                         idPropriete,                      // idPropriete
@@ -163,7 +163,7 @@ public class Factory {
                 );
                 break;
             case "b":
-                construction = new Foret(
+                construction = new Construction_bois(
                         article.getId(),                  // idConstruction
                         article.getNom(),                 // name
                         idPropriete,                      // idPropriete
@@ -214,13 +214,13 @@ public class Factory {
 
             switch (type){
                 case "c":
-                    c = new Mine(idConstruction,nom,idPropriete,type,formate_expiration,buldItems((List<Map<String, Object>>) constructionInfo.get("items")),production);
+                    c = new Construction_cristale(idConstruction,nom,idPropriete,type,formate_expiration,buldItems((List<Map<String, Object>>) constructionInfo.get("items")),production);
                     break;
                 case "b":
-                    c = new Foret(idConstruction,nom,idPropriete,type,formate_expiration,buldItems((List<Map<String, Object>>) constructionInfo.get("items")),production);
+                    c = new Construction_bois(idConstruction,nom,idPropriete,type,formate_expiration,buldItems((List<Map<String, Object>>) constructionInfo.get("items")),production);
                     break;
                 case "e":
-                    c = new Chodron(idConstruction,nom,idPropriete,type,formate_expiration,buldItems((List<Map<String, Object>>) constructionInfo.get("items")),production);
+                    c = new Construction_erable(idConstruction,nom,idPropriete,type,formate_expiration,buldItems((List<Map<String, Object>>) constructionInfo.get("items")),production);
                     break;
             }
 
@@ -250,9 +250,10 @@ public class Factory {
             //TODO metre en place le mechanisme de prix
             String nom = data.get("nom");
             String type = data.get("type");
-//            int nbProduction = Integer.parseInt(data.get("production"));
+            int nbProduction = Integer.parseInt(data.get("nbEffet"));
+            int prix = Controleur.calculerPrix(nbProduction,type.charAt(type.length()-1));
 
-            articles.add(new Article_item(id, 100, nom, type, 1));
+            articles.add(new Article_item(id, prix, nom, type, nbProduction));
         }
         return articles;
     }
@@ -264,9 +265,10 @@ public class Factory {
             String nom = data.get("nom");
             //TODO metre en place le mechanisme de production possible proble au nivaux des nom des champ
             String type = data.get("type");
-//            int nbProduction = Integer.parseInt(data.get("production"));
+            int nbProduction = Integer.parseInt(data.get("production"));
+            int prix = Controleur.calculerPrix(nbProduction,'b');
 
-            articles.add(new Article_construction(id, 100, nom, type, 1));
+            articles.add(new Article_construction(id, prix, nom, type, nbProduction));
         }
         return articles;
     }

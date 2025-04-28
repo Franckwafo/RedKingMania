@@ -7,16 +7,16 @@ import android.widget.TextView;
 import org.calma.redkingmania.R;
 import org.calma.redkingmania.Session;
 import org.calma.redkingmania.item.Item;
+import org.calma.redkingmania.utils.Controleur;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Chodron extends Construction{
+public class Construction_erable extends Construction{
 
 
 
-    public Chodron(String idConstruction, String name, String idPropriete, String type, Date epiration, ArrayList<Item> items, int nbProduct) {
+    public Construction_erable(String idConstruction, String name, String idPropriete, String type, Date epiration, ArrayList<Item> items, int nbProduct) {
         super(idConstruction, name, idPropriete, type, epiration, items, nbProduct);
     }
 
@@ -29,7 +29,7 @@ public class Chodron extends Construction{
         s.getUser().setNbErable(s.getUser().getNbErable()+this.getNbProduct()+nbSup);
 
         TextView cpt = ((Activity) ctx).findViewById(R.id.cpt_erable);
-        cpt.setText(String.valueOf(s.getUser().getNbErable()));
+        cpt.setText(Controleur.formaterPrix(s.getUser().getNbErable()));
 
         Session.getSession().updateUser();
     }
@@ -37,5 +37,14 @@ public class Chodron extends Construction{
     @Override
     public int getType() {
         return 1;
+    }
+
+    @Override
+    public boolean isItemValide(Item item) {
+        boolean valide = false;
+        if (item.getType().charAt(0) == 'e') {
+            valide=true;
+        }
+        return valide;
     }
 }
