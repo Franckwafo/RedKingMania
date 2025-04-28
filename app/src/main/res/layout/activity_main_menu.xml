@@ -155,12 +155,13 @@
             android:src="@drawable/shop" />
 
         <ImageView
+            android:id="@+id/img_game"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_margin="4dp"
-            android:src="@drawable/carte"
+            android:background="@drawable/round"
             android:clipToOutline="true"
-            android:background="@drawable/round"/>
+            android:src="@drawable/carte" />
 
         <ImageView
             android:layout_width="64dp"

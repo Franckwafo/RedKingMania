@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.calma.redkingmania.construction.Construction;
 import org.calma.redkingmania.item.Item;
 import org.calma.redkingmania.item.type.Item_c;
+import org.calma.redkingmania.modal.Modal_mini_game;
 import org.calma.redkingmania.modal.Modal_shop;
 import org.calma.redkingmania.observer.ObserverConstructions;
 import org.calma.redkingmania.observer.ObserverItemInventaire;
@@ -48,6 +50,7 @@ public class Session implements Serializable {
     private Modal_shop modal_shop;
 
     private Shop shop;
+    private Modal_mini_game modal_game;
 
 
     private Handler handler = new Handler(Looper.getMainLooper());
@@ -98,6 +101,9 @@ public class Session implements Serializable {
         observer_constru.start();
 
         Controleur.initBoutique(ctx);
+
+        modal_game = new Modal_mini_game();
+
 
     }
 
@@ -225,6 +231,14 @@ public class Session implements Serializable {
 
     // Getters/Setters
 
+
+    public Modal_mini_game getModal_game() {
+        return modal_game;
+    }
+
+    public void setModal_game(Modal_mini_game modal_game) {
+        this.modal_game = modal_game;
+    }
 
     public Modal_shop getModal_shop() {
         return modal_shop;

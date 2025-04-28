@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@drawable/rounded_button"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Titre -->
+    <TextView
+        android:id="@+id/title_modal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Titre du jeu"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:paddingBottom="8dp"/>
+
+    <!-- Description -->
+    <TextView
+        android:id="@+id/description_modal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Petite description du jeu ici."
+        android:textSize="16sp"
+        android:gravity="center"
+        android:paddingBottom="16dp"/>
+
+    <!-- Cadre pour afficher le jeu -->
+    <FrameLayout
+        android:id="@+id/game_container"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/rounded_input"
+        android:padding="8dp"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Timer -->
+    <TextView
+        android:id="@+id/timer_modal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="00:00"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+</LinearLayout>
