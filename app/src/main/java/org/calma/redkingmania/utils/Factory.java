@@ -35,7 +35,8 @@ public class Factory {
                     userJson.getInt("niveau"),
                     userJson.getInt("nbErable"),
                     userJson.getInt("nbCristaux"),
-                    userJson.getInt("nbBois")
+                    userJson.getInt("nbBois"),
+                    userJson.getString("sex")
             );
 
         } catch (Exception e) {

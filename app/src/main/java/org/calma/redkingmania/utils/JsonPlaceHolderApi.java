@@ -58,4 +58,10 @@ public interface JsonPlaceHolderApi {
             @Query("datePeremption") String datePeremption
     );
 
+    @GET("qr_process.php")
+    Call<ResultResponse> utiliserQr(
+            @Query("id_qr") String idQr,
+            @Query("id_user") String idUser
+    );
+
 }

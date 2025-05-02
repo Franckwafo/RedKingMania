@@ -6,8 +6,8 @@
     android:background="@drawable/rounded_button">
 
     <TextView
-        android:id="@+id/tv_title"
-        android:text="Boutique"
+        android:id="@+id/tv_title_forge"
+        android:text="Forge"
         android:textSize="20sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -15,14 +15,22 @@
         android:layout_height="wrap_content" />
 
     <Switch
-        android:id="@+id/switch_mode"
+        android:id="@+id/switch_forge_mode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="La Boutique" />
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/tv_instruction_forge"
+        android:text="Sélectionnez un objet pour prolonger sa durée de vie."
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_elements"
+        android:id="@+id/rv_items_forge"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_marginTop="16dp" />
@@ -35,7 +43,7 @@
         android:layout_marginTop="16dp">
 
         <Button
-            android:id="@+id/btn_annuler"
+            android:id="@+id/btn_annuler_forge"
             android:text="Annuler"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

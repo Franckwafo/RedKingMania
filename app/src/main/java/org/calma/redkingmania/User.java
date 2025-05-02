@@ -10,13 +10,16 @@ public class User implements Serializable {
     private int nbCristaux;
     private int nbBois;
 
-    public User(String username, String pseudo, int niveau, int nbErable, int nbCristaux, int nbBois) {
+    private String sex;
+
+    public User(String username, String pseudo, int niveau, int nbErable, int nbCristaux, int nbBois, String sex) {
         this.username = username;
         this.pseudo = pseudo;
         this.niveau = niveau;
         this.nbErable = nbErable;
         this.nbCristaux = nbCristaux;
         this.nbBois = nbBois;
+        this.sex = sex;
     }
 
     // === Getters et Setters ===
@@ -67,6 +70,14 @@ public class User implements Serializable {
 
     public void setNbBois(int nbBois) {
         this.nbBois = nbBois;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     @Override

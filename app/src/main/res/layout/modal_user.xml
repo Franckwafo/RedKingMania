@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll_user"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_button"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <!-- Image du roi -->
+        <Button
+            android:id="@+id/btn_retour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="150dp"
+            android:text="Retour" />
+
+        <ImageView
+            android:id="@+id/iv_user_king"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="nom"
+            android:src="@drawable/pp_king" />
+
+        <!-- Nom et niveau -->
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Roi Maël"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_user_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Niveau 4"
+            android:textSize="16sp" />
+
+        <!-- Bouton de level up -->
+        <Button
+            android:id="@+id/btn_level_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Level Up" />
+
+        <!-- Ressources -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_gold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Or : 450"
+                android:textSize="12sp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/tv_wood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Bois : 123"
+                android:textSize="12sp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/tv_rock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Pierre : 200"
+                android:textSize="12sp"
+                android:textStyle="bold|italic" />
+        </LinearLayout>
+
+        <!-- Liste de règles (scrollable via ScrollView parent) -->
+        <!-- Titre principal -->
+        <TextView
+            android:id="@+id/tv_rules_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:text="Bienvenue, souverain de l'Érable"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <!-- Règle 1 -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/rounded_input"
+            android:clipToOutline="true"
+            android:contentDescription="Construire un bâtiment"
+            android:scaleType="centerCrop"
+            android:src="@drawable/r_construire" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:text="🧱 1. Construis des bâtiments grâce aux cristaux d'érable. Chaque bâtiment te permet de produire une ressource précieuse : bois, érable ou cristal d’érable."
+            android:textSize="16sp" />
+
+        <!-- Règle 2 -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/rounded_input"
+            android:clipToOutline="true"
+            android:contentDescription="Production"
+            android:scaleType="centerCrop"
+            android:src="@drawable/r_cliker" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:text="👆 2. Clique frénétiquement sur tes bâtiments pour produire plus ! Certains items permettent même de cliquer automatiquement à ta place."
+            android:textSize="16sp" />
+
+        <!-- Règle 3 -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/rounded_input"
+            android:clipToOutline="true"
+            android:contentDescription="Items"
+            android:scaleType="centerCrop"
+            android:src="@drawable/r_item" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:text="🧰 3. Utilise des items pour booster tes bâtiments. Chaque item a 4 emplacements pour des améliorations. Maintiens l’item pour l’assigner ou le retirer."
+            android:textSize="16sp" />
+
+        <!-- Règle 4 -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/rounded_input"
+            android:clipToOutline="true"
+            android:contentDescription="Réparation"
+            android:scaleType="centerCrop"
+            android:src="@drawable/r_expiration" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:text="🔧 4. Les éléments s’usent ! Va à la forge pour les réparer avec du bois. Mais attention, les artisans sont capricieux, et le coût dépend de l’heure."
+            android:textSize="16sp" />
+
+        <!-- Règle 5 -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/rounded_input"
+            android:clipToOutline="true"
+            android:contentDescription="Carte"
+            android:scaleType="centerCrop"
+            android:src="@drawable/r_carte" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:text="🗺️ 5. Explore la carte pour découvrir d’autres royaumes et obtenir des bonus via des mini-jeux. Parfois, tu trouveras de précieux trésors !"
+            android:textSize="16sp" />
+
+        <!-- Règle 6 -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/rounded_input"
+            android:clipToOutline="true"
+            android:contentDescription="Level Up"
+            android:scaleType="centerCrop"
+            android:src="@drawable/r_level" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:text="🎉 6. Quand tu es prêt, monte de niveau ! Toutes tes constructions sont réparées, une fête éclate dans le royaume, et tu peux repartir plus fort."
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+</ScrollView>

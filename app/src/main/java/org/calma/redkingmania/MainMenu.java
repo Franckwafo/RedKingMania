@@ -1,5 +1,6 @@
 package org.calma.redkingmania;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -8,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import org.calma.redkingmania.utils.Animation;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -27,6 +30,14 @@ public class MainMenu extends AppCompatActivity {
         try {
             Session.getSession().setCtx(MainMenu.this);
             Session.getSession().init();
+
+            Intent intent = getIntent();
+            if (intent != null && intent.hasExtra("event")) {
+                String event = intent.getStringExtra("event");
+                if ("scan".equals(event)) {
+                    Animation.ExplodAnim();
+                }
+            }
 
         } catch (IllegalStateException e) {
             // Affiche une erreur et termine l’activité

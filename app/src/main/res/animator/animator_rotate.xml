@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Déplacement sur l'axe X de -200 à +largeur écran (valeur définie dynamiquement via Java) -->
+    <objectAnimator
+        android:propertyName="translationX"
+        android:duration="2500"
+        android:valueFrom="-200"
+        android:valueTo="2000"
+        android:valueType="floatType" />
+
+    <!-- Rotation -->
+    <objectAnimator
+        android:propertyName="rotation"
+        android:duration="2500"
+        android:valueFrom="0"
+        android:valueTo="1080"
+        android:valueType="floatType" />
+</set>

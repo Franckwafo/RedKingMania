@@ -1,0 +1,20 @@
+<!-- res/animator/animator_explode.xml -->
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <objectAnimator
+        android:propertyName="scaleX"
+        android:valueFrom="0"
+        android:valueTo="3.5"
+        android:duration="300"
+        android:repeatCount="0"/>
+    <objectAnimator
+        android:propertyName="scaleY"
+        android:valueFrom="0"
+        android:valueTo="3.5"
+        android:duration="300"
+        android:repeatCount="0"/>
+    <objectAnimator
+        android:propertyName="alpha"
+        android:valueFrom="0"
+        android:valueTo="1"
+        android:duration="100" />
+</set>

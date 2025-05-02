@@ -35,16 +35,31 @@ public class Login extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Controleur.VerifLastConect(Login.this);
+
+        String event = "";
+
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("event")) {
+            event = intent.getStringExtra("event");
+        }
+
+        Controleur.VerifLastConect(Login.this,event);
 
         userName = findViewById(R.id.nomUtilisateur);
         pswd = findViewById(R.id.motDePasse);
         logButon = findViewById(R.id.btnSeConnecter);
 
+
         logButon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Controleur.VerifUser(Login.this,userName.getText().toString(),pswd.getText().toString());
+                String event = "";
+
+                Intent intent = getIntent();
+                if (intent != null && intent.hasExtra("event")) {
+                    event = intent.getStringExtra("event");
+                }
+                Controleur.VerifUser(Login.this,userName.getText().toString(),pswd.getText().toString(),event);
             }
         });
     }

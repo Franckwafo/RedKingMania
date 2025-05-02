@@ -11,14 +11,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.calma.redkingmania.construction.Construction;
 import org.calma.redkingmania.item.Item;
 import org.calma.redkingmania.item.type.Item_c;
+import org.calma.redkingmania.modal.Modal_QrScanner;
+import org.calma.redkingmania.modal.Modal_forge;
 import org.calma.redkingmania.modal.Modal_mini_game;
 import org.calma.redkingmania.modal.Modal_shop;
+import org.calma.redkingmania.modal.Modal_user;
 import org.calma.redkingmania.observer.ObserverConstructions;
 import org.calma.redkingmania.observer.ObserverItemInventaire;
 import org.calma.redkingmania.recyclerView.Adapter_construction;
@@ -51,6 +55,9 @@ public class Session implements Serializable {
 
     private Shop shop;
     private Modal_mini_game modal_game;
+    private Modal_forge modalForge;
+
+    private Modal_user modalUser;
 
 
     private Handler handler = new Handler(Looper.getMainLooper());
@@ -73,9 +80,7 @@ public class Session implements Serializable {
 
     // Initialisation de la session
     public static void initSession(ArrayList<Construction> constructions, ArrayList<Item> items, User user) {
-        if (instance == null) {
-            instance = new Session(constructions, items, user);
-        }
+        instance = new Session(constructions, items, user);
     }
 
     // Méthodes
@@ -103,6 +108,34 @@ public class Session implements Serializable {
         Controleur.initBoutique(ctx);
 
         modal_game = new Modal_mini_game();
+        modalForge = new Modal_forge(ctx);
+
+        ImageView forge = ((Activity) ctx).findViewById(R.id.img_forge);
+        forge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                modalForge.show_forge();
+            }
+        });
+
+        modalUser = new Modal_user();
+        ImageView user = ((Activity) ctx).findViewById(R.id.user_icon);
+        user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                modalUser.start();
+            }
+        });
+
+        ImageView qrScanButton = ((Activity) ctx).findViewById(R.id.scan_icon);
+        qrScanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Modal_QrScanner scannerFragment = new Modal_QrScanner();
+                AppCompatActivity activity = (AppCompatActivity) ctx;
+                scannerFragment.show(activity.getSupportFragmentManager(), "qrScanner");
+            }
+        });
 
 
     }
@@ -231,6 +264,14 @@ public class Session implements Serializable {
 
     // Getters/Setters
 
+
+    public Modal_forge getModalForge() {
+        return modalForge;
+    }
+
+    public void setModalForge(Modal_forge modalForge) {
+        this.modalForge = modalForge;
+    }
 
     public Modal_mini_game getModal_game() {
         return modal_game;

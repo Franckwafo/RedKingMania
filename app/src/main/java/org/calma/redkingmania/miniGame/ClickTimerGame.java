@@ -115,15 +115,15 @@ public class ClickTimerGame extends MiniGame {
         Random random = new Random();
 
         // Générer un nombre flottant entre min et max
-        float randomFloat = minTime + (maxTime - minTime) * random.nextFloat();
+        float randomFloat = random.nextInt((int)maxTime)+minTime;
 
 
-        int sup = Math.round(randomFloat);
+        int sup = Math.round(randomFloat) + (random.nextInt(500)+50);
 
         Session.getSession().getUser().setNbBois(Session.getSession().getUser().getNbBois()+sup);
 
-        TextView cpt = ((Activity) ctx).findViewById(R.id.cpt_erable);
-        cpt.setText(Controleur.formaterPrix(Session.getSession().getUser().getNbErable()));
+        TextView cpt = ((Activity) ctx).findViewById(R.id.cpt_boi);
+        cpt.setText(Controleur.formaterPrix(Session.getSession().getUser().getNbBois()));
 
         Session.getSession().updateUser();
 

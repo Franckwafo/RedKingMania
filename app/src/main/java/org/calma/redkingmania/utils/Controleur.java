@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import org.calma.redkingmania.Login;
 import org.calma.redkingmania.MainMenu;
 import org.calma.redkingmania.R;
 import org.calma.redkingmania.Session;
@@ -92,7 +94,7 @@ public class Controleur {
     }
 
 
-    public static void VerifUser(Context ctx, String userName, String pswd){
+    public static void VerifUser(Context ctx, String userName, String pswd,String event){
         AppDatabase db = AppDatabase.getInstance(ctx);
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -141,7 +143,7 @@ public class Controleur {
         });
     }
 
-    public static boolean VerifLastConect(Context ctx){
+    public static boolean VerifLastConect(Context ctx,String event){
         AppDatabase db = AppDatabase.getInstance(ctx);
         boolean rslt = false;
 
@@ -177,6 +179,7 @@ public class Controleur {
                             Session.initSession(constructions, items, user);
 
                             Intent intent = new Intent(ctx, MainMenu.class);
+                            intent.putExtra("event", event);
                             ctx.startActivity(intent);
                         } else {
                             Toast.makeText(ctx, response.body().getmsg(), Toast.LENGTH_SHORT).show();
@@ -424,6 +427,49 @@ public class Controleur {
         });
     }
 
+    public static void UseQr(Context ctx,String qr_code){
+        AppDatabase db = AppDatabase.getInstance(ctx);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://4w3.202330093.v2.157-245-242-119.cprapid.com/red_king_mania/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        JsonPlaceHolderApi api = retrofit.create(JsonPlaceHolderApi.class);
+
+        Call<ResultResponse> call = api.utiliserQr(qr_code,Session.getSession().getUser().getUsername());
+
+        call.enqueue(new Callback<ResultResponse>() {
+            @Override
+            public void onResponse(Call<ResultResponse> call, Response<ResultResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    ResultResponse result = response.body();
+
+                    if (result.getResult()){
+                        Toast.makeText(ctx, result.getmsg(), Toast.LENGTH_SHORT).show();
+                        Context ctx = Session.getSession().getCtx();
+                        Intent intent = new Intent(ctx, Login.class);
+                        intent.putExtra("event", "scan"); // Ajoute l'extra ici
+                        ctx.startActivity(intent);
+                        ((Activity) ctx).finish();
+                    }else {
+                        Toast.makeText(ctx, result.getmsg(), Toast.LENGTH_SHORT).show();
+                    }
+
+
+                } else {
+                    Toast.makeText(ctx, "Erreur de réponse", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultResponse> call, Throwable t) {
+                Toast.makeText(ctx, "Erreur de communiction", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
 
     public static String  getConstructionTypeFromSuffix(String input) {
 
@@ -630,4 +676,60 @@ public class Controleur {
         return expiration.getTime();
     }
 
+
+    public static void SetPP(ImageView pp, String sex){
+        switch (sex){
+            case "m":
+                pp.setImageResource(R.drawable.pp_king);
+                break;
+            case "f":
+                pp.setImageResource(R.drawable.pp_queen);
+                break;
+            default:
+                break;
+        }
+    }
+    public static void SetName(TextView pp, String sex,String name){
+        switch (sex){
+            case "m":
+                pp.setText("Roi " + name);
+                break;
+            case "f":
+                pp.setText("Reine " + name);
+                break;
+            default:
+                pp.setText("" + name);
+                break;
+        }
+    }
+
+    public static Date ajouterJours(Date date, int jours) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DAY_OF_YEAR, jours);
+        return cal.getTime();
+    }
+
+    public static int timeGetVariablePrix() {
+        Random r = new Random();
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+
+        int jour = cal.get(Calendar.DAY_OF_MONTH);
+        int heure = cal.get(Calendar.HOUR_OF_DAY);
+        int minute = cal.get(Calendar.MINUTE);
+        int seconde = cal.get(Calendar.SECOND);
+
+        int result = premierChiffre(jour) + premierChiffre(heure) + premierChiffre(minute) + premierChiffre(seconde);
+        int sup = r.nextInt(result) +1;
+        return result/sup;
+    }
+
+    private static int premierChiffre(int nombre) {
+        while (nombre >= 10) {
+            nombre /= 10;
+        }
+        return nombre;
+    }
 }
