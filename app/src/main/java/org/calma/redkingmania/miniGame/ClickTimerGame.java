@@ -118,7 +118,7 @@ public class ClickTimerGame extends MiniGame {
         float randomFloat = random.nextInt((int)maxTime)+minTime;
 
 
-        int sup = Math.round(randomFloat) + (random.nextInt(500)+50);
+        int sup = Math.round(randomFloat) + (random.nextInt(5000)+50);
 
         Session.getSession().getUser().setNbBois(Session.getSession().getUser().getNbBois()+sup);
 

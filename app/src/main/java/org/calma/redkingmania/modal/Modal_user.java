@@ -2,6 +2,8 @@ package org.calma.redkingmania.modal;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -9,9 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.calma.redkingmania.Login;
 import org.calma.redkingmania.R;
 import org.calma.redkingmania.Session;
 import org.calma.redkingmania.User;
+import org.calma.redkingmania.bd.AppDatabase;
+import org.calma.redkingmania.bd.TokenSession;
 import org.calma.redkingmania.construction.Construction;
 import org.calma.redkingmania.item.Item;
 import org.calma.redkingmania.utils.Animation;
@@ -85,7 +90,7 @@ public class Modal_user {
 
                 Session.getSession().getUser().setNbBois(u.getNbBois()-prix);
                 Session.getSession().getUser().setNbErable(u.getNbErable()-prix);
-                Session.getSession().getUser().setNbCristaux(u.getNbErable()-prix);
+                Session.getSession().getUser().setNbCristaux(u.getNbCristaux()-prix);
 
                 TextView cpt_erable = ((Activity) Session.getSession().getCtx()).findViewById(R.id.cpt_erable);
                 TextView cpt_bois = ((Activity) Session.getSession().getCtx()).findViewById(R.id.cpt_boi);
@@ -124,6 +129,19 @@ public class Modal_user {
 
             }else {
                 Toast.makeText(Session.getSession().getCtx(), "Level UP Impossible", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Button btnDeconect = dialog.findViewById(R.id.btn_deconecter);
+        btnDeconect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppDatabase db = AppDatabase.getInstance(Session.getSession().getCtx());
+                db.tokenSessionDao().supprimerTous();
+
+                Context ctx = Session.getSession().getCtx();
+                ((Activity) ctx).finish();
+
             }
         });
 

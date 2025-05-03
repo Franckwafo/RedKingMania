@@ -2,11 +2,15 @@ package org.calma.redkingmania.utils;
 
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
 import android.app.Activity;
+import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -65,6 +69,91 @@ public class Animation {
             container.setVisibility(View.GONE);
         }, totalDuration);
     }
+
+
+    public static void applyPulseAnimation(View view, Context context) {
+        AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.animator_pulse);
+        animatorSet.setTarget(view);
+        animatorSet.start();
+    }
+
+    public static void explodeErableAnim(View containerView,int img) {
+        if (containerView == null) return;
+
+        Context context = containerView.getContext();
+
+        if (!(containerView instanceof ViewGroup)) return;
+
+        ViewGroup group = (ViewGroup) containerView;
+
+        // Obtiens les dimensions de la vue conteneur
+        int width = containerView.getWidth();
+        int height = containerView.getHeight();
+
+        // Si les dimensions ne sont pas encore prêtes (par ex. avant layout), retenter plus tard
+        if (width == 0 || height == 0) {
+            containerView.post(() -> explodeErableAnim(containerView,img));
+            return;
+        }
+
+
+
+        // Crée une ImageView pour l’image érable
+        final ImageView view = new ImageView(context);
+
+        switch (img){
+            case 1:
+                view.setImageResource(R.drawable.erable);
+                break;
+            case 2:
+                view.setImageResource(R.drawable.cristale);
+                break;
+            case 3:
+                view.setImageResource(R.drawable.bois);
+                break;
+        }
+
+        // Taille de l'image
+        int imageSize = 200;
+
+        // Position aléatoire
+        int randX = (int) (Math.random() * (width - imageSize));
+        int randY = (int) (Math.random() * (height - imageSize));
+
+        // Rotation aléatoire
+        float rotation = (float) (Math.random() * 360);
+        view.setRotation(rotation);
+
+        // Applique les paramètres de position
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(imageSize, imageSize);
+        params.leftMargin = randX;
+        params.topMargin = randY;
+        view.setLayoutParams(params);
+
+        // Ajoute la vue dans le conteneur
+        group.addView(view);
+
+        // Charge l'animation
+        AnimatorSet explodeAnim = (AnimatorSet) AnimatorInflater.loadAnimator(
+                context, R.animator.animator_explode_click
+        );
+        explodeAnim.setTarget(view);
+
+        // Supprime l’image après l'animation
+        explodeAnim.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                group.removeView(view);
+            }
+        });
+
+        explodeAnim.start();
+    }
+
+
+
+
+
 
 
 

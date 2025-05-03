@@ -17,6 +17,7 @@ import org.calma.redkingmania.R;
 import org.calma.redkingmania.Session;
 import org.calma.redkingmania.construction.Construction;
 import org.calma.redkingmania.item.Item;
+import org.calma.redkingmania.utils.Animation;
 import org.calma.redkingmania.utils.Controleur;
 
 import java.util.ArrayList;

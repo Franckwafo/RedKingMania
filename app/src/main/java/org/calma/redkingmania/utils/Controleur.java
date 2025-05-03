@@ -205,44 +205,39 @@ public class Controleur {
         boolean rslt = false;
 
 
-        TokenSession tks = db.tokenSessionDao().getlastToken();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://4w3.202330093.v2.157-245-242-119.cprapid.com/red_king_mania/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
-        if (tks!=null){
+        JsonPlaceHolderApi api = retrofit.create(JsonPlaceHolderApi.class);
 
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("https://4w3.202330093.v2.157-245-242-119.cprapid.com/red_king_mania/api/")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
+        Call<ResultResponse> call = api.deleteItem(idItem);
 
-            JsonPlaceHolderApi api = retrofit.create(JsonPlaceHolderApi.class);
+        call.enqueue(new Callback<ResultResponse>() {
+            @Override
+            public void onResponse(Call<ResultResponse> call, Response<ResultResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    // Récupérer le résultat de l'API
+                    boolean rslt = response.body().getResult();
 
-            Call<ResultResponse> call = api.deleteItem(idItem);
+                    // Afficher le résultat
+                    if (rslt) {
 
-            call.enqueue(new Callback<ResultResponse>() {
-                @Override
-                public void onResponse(Call<ResultResponse> call, Response<ResultResponse> response) {
-                    if (response.isSuccessful() && response.body() != null) {
-                        // Récupérer le résultat de l'API
-                        boolean rslt = response.body().getResult();
-
-                        // Afficher le résultat
-                        if (rslt) {
-
-                        } else {
-                            Toast.makeText(ctx, response.body().getmsg(), Toast.LENGTH_SHORT).show();
-                        }
                     } else {
-                        Toast.makeText(ctx, "Erreur de réponse", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ctx, response.body().getmsg(), Toast.LENGTH_SHORT).show();
                     }
+                } else {
+                    Toast.makeText(ctx, "Erreur de réponse", Toast.LENGTH_SHORT).show();
                 }
+            }
 
-                @Override
-                public void onFailure(Call<ResultResponse> call, Throwable t) {
-                    Toast.makeText(ctx, "Erreur de communiction", Toast.LENGTH_SHORT).show();
+            @Override
+            public void onFailure(Call<ResultResponse> call, Throwable t) {
+                Toast.makeText(ctx, "Erreur de communiction", Toast.LENGTH_SHORT).show();
 
-                }
-            });
-        }
+            }
+        });
 
         return rslt;
     }
@@ -253,44 +248,39 @@ public class Controleur {
         boolean rslt = false;
 
 
-        TokenSession tks = db.tokenSessionDao().getlastToken();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://4w3.202330093.v2.157-245-242-119.cprapid.com/red_king_mania/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
-        if (tks!=null){
+        JsonPlaceHolderApi api = retrofit.create(JsonPlaceHolderApi.class);
 
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("https://4w3.202330093.v2.157-245-242-119.cprapid.com/red_king_mania/api/")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
+        Call<ResultResponse> call = api.deleteConstruction(idConstruction);
 
-            JsonPlaceHolderApi api = retrofit.create(JsonPlaceHolderApi.class);
+        call.enqueue(new Callback<ResultResponse>() {
+            @Override
+            public void onResponse(Call<ResultResponse> call, Response<ResultResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    // Récupérer le résultat de l'API
+                    boolean rslt = response.body().getResult();
 
-            Call<ResultResponse> call = api.deleteConstruction(idConstruction);
+                    // Afficher le résultat
+                    if (rslt) {
 
-            call.enqueue(new Callback<ResultResponse>() {
-                @Override
-                public void onResponse(Call<ResultResponse> call, Response<ResultResponse> response) {
-                    if (response.isSuccessful() && response.body() != null) {
-                        // Récupérer le résultat de l'API
-                        boolean rslt = response.body().getResult();
-
-                        // Afficher le résultat
-                        if (rslt) {
-
-                        } else {
-                            Toast.makeText(ctx, response.body().getmsg(), Toast.LENGTH_SHORT).show();
-                        }
                     } else {
-                        Toast.makeText(ctx, "Erreur de réponse", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ctx, response.body().getmsg(), Toast.LENGTH_SHORT).show();
                     }
+                } else {
+                    Toast.makeText(ctx, "Erreur de réponse", Toast.LENGTH_SHORT).show();
                 }
+            }
 
-                @Override
-                public void onFailure(Call<ResultResponse> call, Throwable t) {
-                    Toast.makeText(ctx, "Erreur de communiction", Toast.LENGTH_SHORT).show();
+            @Override
+            public void onFailure(Call<ResultResponse> call, Throwable t) {
+                Toast.makeText(ctx, "Erreur de communiction", Toast.LENGTH_SHORT).show();
 
-                }
-            });
-        }
+            }
+        });
 
         return rslt;
     }
@@ -471,6 +461,51 @@ public class Controleur {
     }
 
 
+    public static boolean inscription(Context ctx,String userId,String pseudo,String pswd,String sex){
+        AppDatabase db = AppDatabase.getInstance(ctx);
+        boolean rslt = false;
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://4w3.202330093.v2.157-245-242-119.cprapid.com/red_king_mania/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        JsonPlaceHolderApi api = retrofit.create(JsonPlaceHolderApi.class);
+
+        Call<ResultResponse> call = api.inscrireUtilisateur(userId,pseudo,pswd,sex);
+
+        call.enqueue(new Callback<ResultResponse>() {
+            @Override
+            public void onResponse(Call<ResultResponse> call, Response<ResultResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    // Récupérer le résultat de l'API
+                    boolean rslt = response.body().getResult();
+
+                    // Afficher le résultat
+                    if (rslt) {
+                        Toast.makeText(ctx, response.body().getmsg(), Toast.LENGTH_SHORT).show();
+                        ((Activity) ctx).finish();
+
+                    } else {
+                        Toast.makeText(ctx, response.body().getmsg(), Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(ctx, "Erreur de réponse", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultResponse> call, Throwable t) {
+                Toast.makeText(ctx, "Erreur de communiction", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        return rslt;
+    }
+
+
     public static String  getConstructionTypeFromSuffix(String input) {
 
         switch (input) {
@@ -588,36 +623,25 @@ public class Controleur {
     }
 
     public static int calculerPrix(int effect, char type) {
-        Random random = new Random();
-        int aleatoire = random.nextInt(10) + 5; // entre 1 et 10
+        int varTime = Controleur.timeGetVariablePrix();
 
-        // Récupère l'heure, minute et seconde
-        Calendar calendar = Calendar.getInstance();
-        int heure = calendar.get(Calendar.HOUR_OF_DAY);
-        int minute = calendar.get(Calendar.MINUTE);
-        int seconde = calendar.get(Calendar.SECOND);
-        int totalTemps = heure + minute + seconde;
-
-        double base;
+        int ref = 0;
 
         if (type == 'c') {
-            // Pour les autoclickers : plus effect est petit, mieux c'est
-            base = Math.pow((120 / (effect + 1)), 4);
+            int s = 62-effect;
+            ref = s*7000;
         } else if (type == 'p') {
             // Pour les producteurs : plus effect est grand, mieux c'est
-            base = Math.pow(effect, 3) * 0.1;
+            ref = effect*100;
         }else if (type == 'b') {
             // Pour les producteurs : plus effect est grand, mieux c'est
-            base = Math.pow(effect, 4) * 0.1;
+            ref = effect*1000;
         }else {
             // Type inconnu
             return 100;
         }
 
-        // Prix final : base * (aléatoire + temps)
-        double prix = base * (((aleatoire * totalTemps)*(aleatoire * totalTemps)) / 50.0);
-
-        return (int) prix;
+        return varTime*ref;
     }
 
 
@@ -700,6 +724,17 @@ public class Controleur {
             default:
                 pp.setText("" + name);
                 break;
+        }
+    }
+
+    public static String GetName(String sex,String name){
+        switch (sex){
+            case "m":
+                return  "Roi " + name;
+            case "f":
+                return "Reine " + name;
+            default:
+                return "" + name;
         }
     }
 

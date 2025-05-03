@@ -1,67 +1,87 @@
 package org.calma.redkingmania.utils;
 
 import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Query;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.POST;
 
 public interface JsonPlaceHolderApi {
-    @GET("verif_log.php")
+
+    @FormUrlEncoded
+    @POST("verif_log.php")
     Call<ResultResponse> checkUser(
-            @Query("id") String param1,
-            @Query("pswd") String param2
+            @Field("id") String param1,
+            @Field("pswd") String param2
     );
 
-    @GET("verif_token.php")
+    @FormUrlEncoded
+    @POST("verif_token.php")
     Call<ResultResponse> checkToken(
-            @Query("token") String param1
+            @Field("token") String param1
     );
 
-    @GET("updateInfos.php")
+    @FormUrlEncoded
+    @POST("updateInfos.php")
     Call<ResultResponse> updateStats(
-            @Query("stats") String param1
+            @Field("stats") String param1
     );
 
-    @GET("updateInfos.php")
+    @FormUrlEncoded
+    @POST("updateInfos.php")
     Call<ResultResponse> updateItems(
-            @Query("items") String param1
+            @Field("items") String param1
     );
 
-    @GET("updateInfos.php")
+    @FormUrlEncoded
+    @POST("updateInfos.php")
     Call<ResultResponse> updateConstrus(
-            @Query("constructions") String param1
+            @Field("constructions") String param1
     );
 
-    @GET("deleteItem.php")
+    @FormUrlEncoded
+    @POST("deleteItem.php")
     Call<ResultResponse> deleteItem(
-            @Query("idPropriete") String param1
+            @Field("idPropriete") String param1
     );
 
-    @GET("deleteConstruction.php")
+    @FormUrlEncoded
+    @POST("deleteConstruction.php")
     Call<ResultResponse> deleteConstruction(
-            @Query("idPropriete") String param1
+            @Field("idPropriete") String param1
     );
 
-    @GET("get_shop_data.php")
-    Call<ResultResponse> getShopData();
+    @POST("get_shop_data.php")
+    Call<ResultResponse> getShopData(); // pas de champ, donc POST simple
 
-    @GET("shop_item.php")
+    @FormUrlEncoded
+    @POST("shop_item.php")
     Call<ResultResponse> addShopItem(
-            @Query("idUser") String idUser,
-            @Query("idItem") String idItem,
-            @Query("datePeremption") String datePeremption
+            @Field("idUser") String idUser,
+            @Field("idItem") String idItem,
+            @Field("datePeremption") String datePeremption
     );
 
-    @GET("shop_construction.php")
+    @FormUrlEncoded
+    @POST("shop_construction.php")
     Call<ResultResponse> addShopConstruction(
-            @Query("idUser") String idUser,
-            @Query("idConstruction") String idConstruction,
-            @Query("datePeremption") String datePeremption
+            @Field("idUser") String idUser,
+            @Field("idConstruction") String idConstruction,
+            @Field("datePeremption") String datePeremption
     );
 
-    @GET("qr_process.php")
+    @FormUrlEncoded
+    @POST("qr_process.php")
     Call<ResultResponse> utiliserQr(
-            @Query("id_qr") String idQr,
-            @Query("id_user") String idUser
+            @Field("id_qr") String idQr,
+            @Field("id_user") String idUser
     );
 
+    @FormUrlEncoded
+    @POST("add_user.php")
+    Call<ResultResponse> inscrireUtilisateur(
+            @Field("username") String username,
+            @Field("pseudo") String pseudo,
+            @Field("pswd") String pswd,
+            @Field("sexe") String sexe
+    );
 }

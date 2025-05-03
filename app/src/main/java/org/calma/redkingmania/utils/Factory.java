@@ -1,5 +1,8 @@
 package org.calma.redkingmania.utils;
 
+import android.content.Context;
+import android.view.View;
+
 import org.calma.redkingmania.User;
 import org.calma.redkingmania.construction.Construction_erable;
 import org.calma.redkingmania.construction.Construction;
@@ -12,6 +15,13 @@ import org.calma.redkingmania.item.Item_c_c;
 import org.calma.redkingmania.item.Item_c_p;
 import org.calma.redkingmania.item.Item_e_c;
 import org.calma.redkingmania.item.Item_e_p;
+import org.calma.redkingmania.miniGame.ClickTimerGame;
+import org.calma.redkingmania.miniGame.ColorReflexGame;
+import org.calma.redkingmania.miniGame.FindTheColorGame;
+import org.calma.redkingmania.miniGame.MemoryFlashGame;
+import org.calma.redkingmania.miniGame.MemoryNumberGame;
+import org.calma.redkingmania.miniGame.MiniGame;
+import org.calma.redkingmania.miniGame.OddOneOutGame;
 import org.calma.redkingmania.shop.Article_construction;
 import org.calma.redkingmania.shop.Article_item;
 import org.json.JSONObject;
@@ -22,6 +32,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class Factory {
     public static User buldUser(Map<String, Object> userInfo){
@@ -272,6 +283,27 @@ public class Factory {
             articles.add(new Article_construction(id, prix, nom, type, nbProduction));
         }
         return articles;
+    }
+
+    public static MiniGame GetGame(Context ctx, View view){
+
+        Random rdm = new Random();
+
+        switch (rdm.nextInt(6)){
+            case 0:
+                return new ClickTimerGame(ctx,view);
+            case 1:
+                return new ColorReflexGame(ctx,view);
+            case 2:
+                return new FindTheColorGame(ctx,view);
+            case 3:
+                return new MemoryFlashGame(ctx,view);
+            case 4:
+                return new MemoryNumberGame(ctx,view);
+            case 5:
+                return new OddOneOutGame(ctx,view);
+        }
+        return null;
     }
 
 

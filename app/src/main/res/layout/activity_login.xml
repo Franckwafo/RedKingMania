@@ -93,12 +93,12 @@
                 android:textColor="#FFFFFF"/>
 
             <TextView
-                android:id="@+id/motDePasseOublie"
+                android:id="@+id/classementLink"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                android:text="Mot de passe oublié ?"
+                android:text="Classement Des royaumes"
                 android:textColor="#1976D2"
                 android:textStyle="bold" />
 

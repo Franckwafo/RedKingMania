@@ -17,8 +17,13 @@
             android:id="@+id/btn_retour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="150dp"
             android:text="Retour" />
+        <Button
+            android:id="@+id/btn_deconecter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="150dp"
+            android:text="Se deconnecter" />
 
         <ImageView
             android:id="@+id/iv_user_king"
@@ -182,7 +187,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
-            android:text="🗺️ 5. Explore la carte pour découvrir d’autres royaumes et obtenir des bonus via des mini-jeux. Parfois, tu trouveras de précieux trésors !"
+            android:text="🗺️ 5. Explore la carte pour découvrir d’autres royaumes et obtenir des bonus via des mini-jeux. Parfois, tu trouveras de précieux trésors ! Et egalement le miroire magique 'La camera vous permetrat d'obtenir des cadeaux, en scanant les qr codes encantes'"
             android:textSize="16sp" />
 
         <!-- Règle 6 -->

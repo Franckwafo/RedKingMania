@@ -11,8 +11,15 @@ import android.widget.TextView;
 import org.calma.redkingmania.R;
 import org.calma.redkingmania.Session;
 import org.calma.redkingmania.miniGame.ClickTimerGame;
+import org.calma.redkingmania.miniGame.ColorReflexGame;
+import org.calma.redkingmania.miniGame.FindTheColorGame;
+import org.calma.redkingmania.miniGame.MemoryFlashGame;
+import org.calma.redkingmania.miniGame.MemoryNumberGame;
 import org.calma.redkingmania.miniGame.MiniGame;
+import org.calma.redkingmania.miniGame.OddOneOutGame;
+import org.calma.redkingmania.miniGame.TapSpamGame;
 import org.calma.redkingmania.miniGame.Test;
+import org.calma.redkingmania.utils.Factory;
 
 public class Modal_mini_game {
     private Dialog dialog;
@@ -47,7 +54,7 @@ public class Modal_mini_game {
         description = dialog.findViewById(R.id.description_modal);
 
         // 3. Créer le mini-jeu
-        game = new ClickTimerGame(activity, gameContainer);
+        game = Factory.GetGame(activity, gameContainer);
         if (game == null) {
             throw new IllegalStateException("Le MiniGame doit être défini avant de démarrer !");
         }

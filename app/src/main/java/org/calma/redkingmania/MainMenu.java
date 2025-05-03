@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import org.calma.redkingmania.utils.Animation;
+import org.calma.redkingmania.utils.Controleur;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -38,6 +39,8 @@ public class MainMenu extends AppCompatActivity {
                     Animation.ExplodAnim();
                 }
             }
+
+            Toast.makeText(this,  "Salutation "+ Controleur.GetName(Session.getSession().getUser().getSex(),Session.getSession().getUser().getPseudo()), Toast.LENGTH_SHORT).show();
 
         } catch (IllegalStateException e) {
             // Affiche une erreur et termine l’activité

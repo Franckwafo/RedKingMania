@@ -2,6 +2,7 @@ package org.calma.redkingmania;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +25,9 @@ public class Login extends AppCompatActivity {
     EditText pswd;
 
     Button logButon;
+    Button inscription;
+
+    TextView link_classement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,8 @@ public class Login extends AppCompatActivity {
         userName = findViewById(R.id.nomUtilisateur);
         pswd = findViewById(R.id.motDePasse);
         logButon = findViewById(R.id.btnSeConnecter);
+        inscription = findViewById(R.id.btnInscrire);
+        link_classement = findViewById(R.id.classementLink);
 
 
         logButon.setOnClickListener(new View.OnClickListener() {
@@ -62,5 +68,25 @@ public class Login extends AppCompatActivity {
                 Controleur.VerifUser(Login.this,userName.getText().toString(),pswd.getText().toString(),event);
             }
         });
+
+        inscription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, Inscription.class);
+                startActivity(intent);
+            }
+        });
+
+        link_classement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://fr.wikipedia.org/wiki/%C3%89";
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                startActivity(intent);
+            }
+        });
+
+
     }
 }

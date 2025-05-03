@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/reflex_game_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/button_reflex"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/c_red"
+        android:gravity="center"
+        android:text="Attendez le VERT"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+</FrameLayout>
