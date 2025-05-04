@@ -2,11 +2,13 @@ package org.calma.redkingmania.construction;
 
 import android.app.Activity;
 import android.content.Context;
+import android.view.View;
 import android.widget.TextView;
 
 import org.calma.redkingmania.R;
 import org.calma.redkingmania.Session;
 import org.calma.redkingmania.item.Item;
+import org.calma.redkingmania.utils.Animation;
 import org.calma.redkingmania.utils.Controleur;
 
 import java.util.ArrayList;
@@ -29,6 +31,8 @@ public class Construction_bois extends Construction{
         TextView cpt = ((Activity) ctx).findViewById(R.id.cpt_boi);
         cpt.setText(Controleur.formaterPrix(s.getUser().getNbBois()));
         Session.getSession().updateUser();
+
+        Animation.applyPulseAnimation(cpt,Session.getSession().getCtx());
     }
 
     @Override

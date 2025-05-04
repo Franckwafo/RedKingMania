@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:background="@drawable/rounded_button">
+
+    <!-- Partie gauche : Profil du joueur -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingEnd="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/btn_retour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Retour" />
+
+            <Button
+                android:id="@+id/btn_deconecter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:text="Se déconnecter" />
+
+            <ImageView
+                android:id="@+id/iv_user_king"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="nom"
+                android:src="@drawable/pp_king" />
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Roi Maël"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_user_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Niveau 4"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_level_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Level Up" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_gold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="Or : 450"
+                    android:textSize="12sp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:id="@+id/tv_wood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="Bois : 123"
+                    android:textSize="12sp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:id="@+id/tv_rock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="Pierre : 200"
+                    android:textSize="12sp"
+                    android:textStyle="bold|italic" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Partie droite : Règles du jeu -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:paddingStart="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_rules_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:text="Bienvenue, souverain de l'Érable"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <!-- Règle 1 -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/rounded_input"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/r_construire" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:text="🧱 1. Construis des bâtiments grâce aux cristaux d'érable..."
+                android:textSize="16sp" />
+
+            <!-- Règle 2 -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/rounded_input"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/r_cliker" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:text="👆 2. Clique frénétiquement sur tes bâtiments..."
+                android:textSize="16sp" />
+
+            <!-- Règle 3 -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/rounded_input"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/r_item" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:text="🧰 3. Utilise des items pour booster tes bâtiments..."
+                android:textSize="16sp" />
+
+            <!-- Règle 4 -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/rounded_input"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/r_expiration" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:text="🔧 4. Les éléments s’usent..."
+                android:textSize="16sp" />
+
+            <!-- Règle 5 -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/rounded_input"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/r_carte" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:text="🗺️ 5. Explore la carte... caméra, QR codes enchantés."
+                android:textSize="16sp" />
+
+            <!-- Règle 6 -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/rounded_input"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/r_level" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:text="🎉 6. Quand tu es prêt, monte de niveau..."
+                android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
