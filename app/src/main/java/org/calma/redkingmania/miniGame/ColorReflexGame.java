@@ -31,8 +31,8 @@ public class ColorReflexGame extends MiniGame {
         this.context = ctx;
         this.gameContainer = (FrameLayout) view;
 
-        setName("Réflexe couleur !");
-        setDescription("Clique quand le bouton devient VERT !");
+        setName(Session.getSession().getCtx().getString(R.string.color_reflex));
+        setDescription(Session.getSession().getCtx().getString(R.string.color_reflex_describ));
     }
 
     @Override
@@ -73,7 +73,7 @@ public class ColorReflexGame extends MiniGame {
 
     @Override
     public void win() {
-        Toast.makeText(context, "Réflexe parfait !", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, Session.getSession().getCtx().getString(R.string.color_reflex_win_msg), Toast.LENGTH_SHORT).show();
         int reward = 50 + random.nextInt(20000); // Récompense bois
 
         Session.getSession().getUser().setNbCristaux(Session.getSession().getUser().getNbCristaux() + reward);
@@ -87,7 +87,7 @@ public class ColorReflexGame extends MiniGame {
 
     @Override
     public void loos() {
-        Toast.makeText(context, "Trop tôt !", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, Session.getSession().getCtx().getString(R.string.color_reflex_loose_msg), Toast.LENGTH_SHORT).show();
         Session.getSession().getModal_game().closeModal();
     }
 }

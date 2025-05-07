@@ -29,8 +29,8 @@ public class OddOneOutGame extends MiniGame {
         this.context = ctx;
         this.gameContainer = (FrameLayout) view;
 
-        setName("Trouvez l'intrus !");
-        setDescription("Repère l'émoticône différente parmi les autres avant 5 secondes !");
+        setName(Session.getSession().getCtx().getString(R.string.odd_game));
+        setDescription(Session.getSession().getCtx().getString(R.string.odd_game_describ));
     }
 
     @Override
@@ -86,7 +86,7 @@ public class OddOneOutGame extends MiniGame {
 
     @Override
     public void win() {
-        Toast.makeText(context, "Bien joué ! Tu as trouvé l’intrus 😎", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, R.string.odd_game_win_msg, Toast.LENGTH_SHORT).show();
         int crystals = new Random().nextInt(5000) + 5;
 
         Session.getSession().getUser().setNbCristaux(Session.getSession().getUser().getNbCristaux() + crystals);
@@ -99,7 +99,7 @@ public class OddOneOutGame extends MiniGame {
 
     @Override
     public void loos() {
-        Toast.makeText(context, "Oh non ! Ce n'était pas le bon 😢", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, R.string.odd_game_loos_msg, Toast.LENGTH_SHORT).show();
         Session.getSession().getModal_game().closeModal();
     }
 }

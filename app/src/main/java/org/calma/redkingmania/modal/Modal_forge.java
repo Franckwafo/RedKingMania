@@ -48,7 +48,7 @@ public class Modal_forge {
 
         TextView title = dialog.findViewById(R.id.tv_title_forge);
         TextView description = dialog.findViewById(R.id.tv_instruction_forge);
-        description.setText("Sélectionnez un objet pour prolonger sa durée de vie pour " + Controleur.formaterPrix(this.prix) + " de bois");
+        description.setText(Session.getSession().getCtx().getString(R.string.modal_forge_describ) +" "+ Controleur.formaterPrix(this.prix) +" "+ Session.getSession().getCtx().getString(R.string.modal_forge_describ_next) );
         Switch switchMode = dialog.findViewById(R.id.switch_forge_mode);
         rv = dialog.findViewById(R.id.rv_items_forge);
         Button btnAnnuler = dialog.findViewById(R.id.btn_annuler_forge);

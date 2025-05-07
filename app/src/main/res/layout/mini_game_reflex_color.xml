@@ -12,7 +12,7 @@
         android:layout_height="200dp"
         android:background="@color/c_red"
         android:gravity="center"
-        android:text="Attendez le VERT"
+        android:text="@string/reflex_color_game_l_indication"
         android:textColor="#FFFFFF"
         android:textSize="20sp" />
 

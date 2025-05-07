@@ -95,14 +95,14 @@ public abstract class Holder_construction extends RecyclerView.ViewHolder {
         ImageView imgItem = dialog.findViewById(R.id.itemImage);
         imgItem.setImageResource(resId);
         TextView txt_nom = dialog.findViewById(R.id.itemNom);
-        txt_nom.setText(i.getNom());
+        txt_nom.setText(Controleur.getTrsanslateName(i.getNom()));
         TextView txt_type = dialog.findViewById(R.id.itemType);
-        txt_type.setText("Type : " + Controleur.getItemTypeFromSuffix(i.getType()));
+        txt_type.setText(Session.getSession().getCtx().getString(R.string.modal_type)+" " + Controleur.getItemTypeFromSuffix(i.getType()));
         TextView txt_effect = dialog.findViewById(R.id.itemEffet);
-        txt_effect.setText("Effets : " + Controleur.getItemEffectFromSuffix(i.getType(),i));
+        txt_effect.setText(Session.getSession().getCtx().getString(R.string.modal_effect)+" " + Controleur.getItemEffectFromSuffix(i.getType(),i));
 
         TextView txt_expiration = dialog.findViewById(R.id.expiration);
-        txt_expiration.setText("Valide pour " + Controleur.getTimeLeft(i.getDatePeremption()));
+        txt_expiration.setText(Session.getSession().getCtx().getString(R.string.modal_valid_msg)+" "+ Controleur.getTimeLeft(i.getDatePeremption()));
 
         Button button = dialog.findViewById(R.id.btnFermer);
         button.setBackgroundColor(Color.parseColor(Controleur.getColorFromEffect(i.getNbEffet())));

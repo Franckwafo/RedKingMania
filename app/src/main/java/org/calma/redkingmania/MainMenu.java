@@ -52,11 +52,11 @@ public class MainMenu extends AppCompatActivity {
                 }
             }
 
-            Toast.makeText(this,  "Salutation "+ Controleur.GetName(Session.getSession().getUser().getSex(),Session.getSession().getUser().getPseudo()), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,  this.getString(R.string.main_salutation) +" "+ Controleur.GetName(Session.getSession().getUser().getSex(),Session.getSession().getUser().getPseudo()), Toast.LENGTH_SHORT).show();
 
         } catch (IllegalStateException e) {
             // Affiche une erreur et termine l’activité
-            Toast.makeText(this, "Erreur de session : " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, this.getString(R.string.main_erreure_session)+" " + e.getMessage(), Toast.LENGTH_SHORT).show();
             finish();
         }
 

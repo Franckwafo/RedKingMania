@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 
+import org.calma.redkingmania.R;
 import org.calma.redkingmania.Session;
 import org.calma.redkingmania.item.Item;
 import org.calma.redkingmania.utils.Controleur;
@@ -44,7 +45,7 @@ public class ObserverItemInventaire {
         while (iterator.hasNext()) {
             Item item = iterator.next();
             if (item.getDatePeremption().before(now)) {
-                Toast.makeText(Session.getSession().getCtx(), "Item : " + item.getNom() + " détruit", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Session.getSession().getCtx(), R.string.shop_item_confirmation+" " + Controleur.getTrsanslateName(item.getNom()) +" "  +R.string.obsv_message_detruit, Toast.LENGTH_SHORT).show();
                 Controleur.DeletItemExpired(Session.getSession().getCtx(), item.getIdPropriete());
                 iterator.remove();
                 Session.getSession().getAdp_item().notifyDataSetChanged();

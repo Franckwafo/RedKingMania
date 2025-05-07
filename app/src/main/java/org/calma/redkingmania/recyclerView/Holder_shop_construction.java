@@ -29,9 +29,9 @@ public class Holder_shop_construction extends RecyclerView.ViewHolder {
     }
 
     public void bind(Article_construction article) {
-        itemNom.setText(article.getNom());
-        itemType.setText("Type : " + Controleur.getConstructionTypeFromSuffix(article.getType()));
-        itemEffet.setText("Production : +" + article.getNbProduction());
+        itemNom.setText(Controleur.getTrsanslateName(article.getNom()));
+        itemType.setText(Session.getSession().getCtx().getString(R.string.modal_type)+" "  + Controleur.getConstructionTypeFromSuffix(article.getType()));
+        itemEffet.setText(Session.getSession().getCtx().getString(R.string.modal_effect)+" " + article.getNbProduction());
         prix.setText(Controleur.formaterPrix(article.getPrix()));
 
         // Image statique ici, tu peux adapter si tes articles ont une image personnalisée

@@ -24,10 +24,10 @@ public class Article_construction extends Article_shop{
 
         // Vérification si l'utilisateur a assez de ressources pour acheter la construction
         if (Session.getSession().getUser().getNbCristaux() - this.prix < 0) {
-            Toast.makeText(ctx, "Acheter impossible !!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ctx, R.string.shop_action_erreur, Toast.LENGTH_SHORT).show();
         } else {
             // Affichage de la confirmation de l'achat dans la console
-            System.out.println("Construction " + this.nom + " Acheter !!!");
+            System.out.println(R.string.shop_construction_confirmation+" "+ this.nom +" "+R.string.shop_confirmation_next);
 
             // Mise à jour du nombre de ressources de l'utilisateur
             Session.getSession().getUser().setNbCristaux(Session.getSession().getUser().getNbCristaux() - this.prix);

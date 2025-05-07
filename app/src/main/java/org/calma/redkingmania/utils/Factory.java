@@ -22,6 +22,7 @@ import org.calma.redkingmania.miniGame.MemoryFlashGame;
 import org.calma.redkingmania.miniGame.MemoryNumberGame;
 import org.calma.redkingmania.miniGame.MiniGame;
 import org.calma.redkingmania.miniGame.OddOneOutGame;
+import org.calma.redkingmania.miniGame.TapSpamGame;
 import org.calma.redkingmania.shop.Article_construction;
 import org.calma.redkingmania.shop.Article_item;
 import org.json.JSONObject;
@@ -289,7 +290,7 @@ public class Factory {
 
         Random rdm = new Random();
 
-        switch (rdm.nextInt(6)){
+        switch (rdm.nextInt(7)){
             case 0:
                 return new ClickTimerGame(ctx,view);
             case 1:
@@ -302,6 +303,8 @@ public class Factory {
                 return new MemoryNumberGame(ctx,view);
             case 5:
                 return new OddOneOutGame(ctx,view);
+            case 6:
+                return new TapSpamGame(ctx,view);
         }
         return null;
     }

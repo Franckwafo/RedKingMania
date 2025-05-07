@@ -11,7 +11,7 @@
         android:id="@+id/text_instruction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cliquez au bon moment !"
+        android:text="@string/click_tim_game_l_description"
         android:textSize="20sp"
         android:paddingBottom="32dp" />
 
@@ -19,6 +19,6 @@
         android:id="@+id/button_click"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Je clique !" />
+        android:text="@string/click_time_btn" />
 
 </LinearLayout>

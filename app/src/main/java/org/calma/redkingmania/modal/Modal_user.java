@@ -67,19 +67,19 @@ public class Modal_user {
         Controleur.SetName(nom,u.getSex(),u.getPseudo());
 
         TextView niveau = dialog.findViewById(R.id.tv_user_level);
-        niveau.setText("Niveau : " + u.getNiveau() );
+        niveau.setText(Session.getSession().getCtx().getString(R.string.user_level)+" " + u.getNiveau() );
 
 
 //
         TextView tvErable = dialog.findViewById(R.id.tv_gold);
-        tvErable.setText("Erable "+Controleur.formaterPrix(u.getNbErable()));
+        tvErable.setText(Session.getSession().getCtx().getString(R.string.ctrl_unit_erable)+" " +Controleur.formaterPrix(u.getNbErable()));
         TextView tvBoi = dialog.findViewById(R.id.tv_wood);
-        tvBoi.setText("Boi "+Controleur.formaterPrix(u.getNbBois()));
+        tvBoi.setText(Session.getSession().getCtx().getString(R.string.ctrl_unit_bois)+" " +Controleur.formaterPrix(u.getNbBois()));
         TextView tvCristal = dialog.findViewById(R.id.tv_rock);
-        tvCristal.setText("Cristale "+Controleur.formaterPrix(u.getNbCristaux()));
+        tvCristal.setText(Session.getSession().getCtx().getString(R.string.ctrl_unit_cristale)+" " +Controleur.formaterPrix(u.getNbCristaux()));
 
         Button btnLevelUp = dialog.findViewById(R.id.btn_level_up);
-        btnLevelUp.setText("Level up pour " + Controleur.formaterPrix(prix)+ " de chaque unite");
+        btnLevelUp.setText(Session.getSession().getCtx().getString(R.string.user_level_up_info)+" " + Controleur.formaterPrix(prix)+ " "+Session.getSession().getCtx().getString(R.string.user_level_up_info_next));
 
 
 
@@ -128,7 +128,7 @@ public class Modal_user {
 
 
             }else {
-                Toast.makeText(Session.getSession().getCtx(), "Level UP Impossible", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Session.getSession().getCtx(), Session.getSession().getCtx().getString(R.string.user_level_up_erreur), Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -29,8 +29,8 @@ public class TapSpamGame extends MiniGame {
         this.context = ctx;
         this.gameContainer = (FrameLayout) view;
 
-        setName("Tappe vite !");
-        setDescription("Appuie rapidement sur le bouton pour gagner !");
+        setName(Session.getSession().getCtx().getString(R.string.tap_game));
+        setDescription(Session.getSession().getCtx().getString(R.string.tap_game_describ));
     }
 
     @Override
@@ -64,7 +64,7 @@ public class TapSpamGame extends MiniGame {
 
         tapButton.setOnClickListener(v -> {
             tapCount++;
-            tapCounter.setText("Clics : " + tapCount);
+            tapCounter.setText(Session.getSession().getCtx().getString(R.string.tap_game_indication) + tapCount);
         });
 
         gameContainer.addView(gameView);
@@ -72,7 +72,7 @@ public class TapSpamGame extends MiniGame {
 
     @Override
     public void win() {
-        Toast.makeText(context, "Tu as cliqué assez vite !", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, Session.getSession().getCtx().getString(R.string.tap_game_win_msg), Toast.LENGTH_SHORT).show();
         int bonus = new Random().nextInt(300) + 10;
 
         Session.getSession().getUser().setNbErable(
@@ -88,7 +88,7 @@ public class TapSpamGame extends MiniGame {
 
     @Override
     public void loos() {
-        Toast.makeText(context, "Trop lent ! Essaie encore...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, Session.getSession().getCtx().getString(R.string.tap_game_loss_msg), Toast.LENGTH_SHORT).show();
         Session.getSession().getModal_game().closeModal();
     }
 }

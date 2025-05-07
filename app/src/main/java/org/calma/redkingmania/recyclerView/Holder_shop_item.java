@@ -27,7 +27,7 @@ public class Holder_shop_item extends RecyclerView.ViewHolder {
     }
 
     public void bind(Article_item article) {
-        itemNom.setText(article.getNom());
+        itemNom.setText(Controleur.getTrsanslateName(article.getNom()));
         itemType.setText(Controleur.getItemTypeFromSuffix(article.getType()));
         //TODO changer les image
         itemEffet.setText(Controleur.getArticleEffectFromSuffix(article));

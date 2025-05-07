@@ -3,6 +3,7 @@ package org.calma.redkingmania;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ import org.calma.redkingmania.shop.Article_construction;
 import org.calma.redkingmania.shop.Article_item;
 import org.calma.redkingmania.shop.Shop;
 import org.calma.redkingmania.utils.Controleur;
+import org.calma.redkingmania.utils.Song;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -62,6 +64,8 @@ public class Session implements Serializable {
 
     private Handler handler = new Handler(Looper.getMainLooper());
     private Runnable productionRunnable;
+
+    private MediaPlayer back_song;
 
     // Constructeur privé
     private Session(ArrayList<Construction> constructions, ArrayList<Item> items, User user) {
@@ -138,6 +142,18 @@ public class Session implements Serializable {
         });
 
 
+        back_song = MediaPlayer.create(ctx, R.raw.back_song);
+        back_song.setLooping(true);
+        back_song.setVolume(0.3f, 0.3f); // 30% du volume max à gauche et à droite
+        back_song.start();
+
+
+//        Song.setBackSong(ctx,back_song);
+
+    }
+
+    public void stopSong(){
+        this.back_song.stop();
     }
 
     public void initCpt(){
@@ -204,7 +220,7 @@ public class Session implements Serializable {
                 updateItems();
                 updateConstructions();
             }else {
-                Toast.makeText(Session.getSession().getCtx(), "Mouvment impossible", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Session.getSession().getCtx(), R.string.session_mouve_impossible, Toast.LENGTH_SHORT).show();
                 this.setItemRemoveConstruSelected(null);
                 this.setRemoveConstruSelected(null);
                 this.setItemSelected(null);

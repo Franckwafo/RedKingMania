@@ -32,8 +32,8 @@ public class Holder_forge_construction extends RecyclerView.ViewHolder {
     }
 
     public void bind(Construction constru) {
-        tvNom.setText(constru.getName());
-        tvDureeVie.setText("Valide pour " + Controleur.getTimeLeft(constru.getEpiration()));
+        tvNom.setText(Controleur.getTrsanslateName(constru.getName()));
+        tvDureeVie.setText(Session.getSession().getCtx().getString(R.string.modal_valid_msg)+" " + Controleur.getTimeLeft(constru.getEpiration()));
 
         itemView.setOnClickListener(v -> {
             if (Session.getSession().getUser().getNbBois()-Session.getSession().getModalForge().getPrix()>=0){

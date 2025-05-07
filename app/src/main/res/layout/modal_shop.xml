@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/tv_title"
-        android:text="Boutique"
+        android:text="@string/shop_title"
         android:textSize="20sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="La Boutique" />
+        android:text="@string/shop_lable" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_elements"
@@ -36,7 +36,7 @@
 
         <Button
             android:id="@+id/btn_annuler"
-            android:text="Annuler"
+            android:text="@string/btn_annuler"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

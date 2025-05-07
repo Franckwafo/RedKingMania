@@ -17,13 +17,13 @@
             android:id="@+id/btn_retour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Retour" />
+            android:text="@string/user_btn_retour" />
         <Button
             android:id="@+id/btn_deconecter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="150dp"
-            android:text="Se deconnecter" />
+            android:text="@string/user_btn_deco" />
 
         <ImageView
             android:id="@+id/iv_user_king"
@@ -101,7 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
-            android:text="Bienvenue, souverain de l'Érable"
+            android:text="@string/regle_title"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -119,7 +119,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
-            android:text="🧱 1. Construis des bâtiments grâce aux cristaux d'érable. Chaque bâtiment te permet de produire une ressource précieuse : bois, érable ou cristal d’érable."
+            android:text="@string/regle_1"
             android:textSize="16sp" />
 
         <!-- Règle 2 -->
@@ -136,7 +136,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
-            android:text="👆 2. Clique frénétiquement sur tes bâtiments pour produire plus ! Certains items permettent même de cliquer automatiquement à ta place."
+            android:text="@string/regle_2"
             android:textSize="16sp" />
 
         <!-- Règle 3 -->
@@ -153,7 +153,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
-            android:text="🧰 3. Utilise des items pour booster tes bâtiments. Chaque item a 4 emplacements pour des améliorations. Maintiens l’item pour l’assigner ou le retirer."
+            android:text="@string/regle_3"
             android:textSize="16sp" />
 
         <!-- Règle 4 -->
@@ -170,7 +170,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
-            android:text="🔧 4. Les éléments s’usent ! Va à la forge pour les réparer avec du bois. Mais attention, les artisans sont capricieux, et le coût dépend de l’heure."
+            android:text="@string/regle_4"
             android:textSize="16sp" />
 
         <!-- Règle 5 -->
@@ -187,7 +187,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
-            android:text="🗺️ 5. Explore la carte pour découvrir d’autres royaumes et obtenir des bonus via des mini-jeux. Parfois, tu trouveras de précieux trésors ! Et egalement le miroire magique 'La camera vous permetrat d'obtenir des cadeaux, en scanant les qr codes encantes'"
+            android:text="@string/regle_5"
             android:textSize="16sp" />
 
         <!-- Règle 6 -->
@@ -204,7 +204,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
-            android:text="🎉 6. Quand tu es prêt, monte de niveau ! Toutes tes constructions sont réparées, une fête éclate dans le royaume, et tu peux repartir plus fort."
+            android:text="@string/regle_6"
             android:textSize="16sp" />
 
 

@@ -28,8 +28,8 @@ public class MemoryNumberGame extends MiniGame {
         this.context = ctx;
         this.gameContainer = (FrameLayout) view;
 
-        setName("Souviens-toi du nombre !");
-        setDescription("Mémorisez un nombre et retapez-le correctement.");
+        setName(Session.getSession().getCtx().getString(R.string.number_game));
+        setDescription(Session.getSession().getCtx().getString(R.string.number_game_describ));
     }
 
     @Override
@@ -56,7 +56,7 @@ public class MemoryNumberGame extends MiniGame {
             }
 
             public void onFinish() {
-                numberText.setText("Quel était le nombre ?");
+                numberText.setText(Session.getSession().getCtx().getString(R.string.number_game_indication));
                 inputField.setVisibility(View.VISIBLE);
                 validateButton.setVisibility(View.VISIBLE);
                 timerView.setText("");
@@ -76,7 +76,7 @@ public class MemoryNumberGame extends MiniGame {
 
     @Override
     public void win() {
-        Toast.makeText(context, "Bonne mémoire !", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, Session.getSession().getCtx().getString(R.string.number_game_win_msg), Toast.LENGTH_SHORT).show();
         int gain = new Random().nextInt(300) + 100;
 
         Session.getSession().getUser().setNbBois(Session.getSession().getUser().getNbBois() + gain);
@@ -89,7 +89,7 @@ public class MemoryNumberGame extends MiniGame {
 
     @Override
     public void loos() {
-        Toast.makeText(context, "Perdu ! Ce n'était pas le bon nombre...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, Session.getSession().getCtx().getString(R.string.number_game_loss_msg), Toast.LENGTH_SHORT).show();
         Session.getSession().getModal_game().closeModal();
     }
 }

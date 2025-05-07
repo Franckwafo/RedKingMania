@@ -54,7 +54,7 @@ public class ObserverConstructions {
                 Controleur.DeletConstructionExpired(Session.getSession().getCtx(), constru.getIdPropriete());
                 iterator.remove();
                 Session.getSession().getAdp().notifyDataSetChanged();
-                Toast.makeText(Session.getSession().getCtx(), "Construction : " + constru.getName() + " détruit", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Session.getSession().getCtx(), R.string.shop_construction_confirmation + Controleur.getTrsanslateName(constru.getName()) + " "  +R.string.obsv_message_detruit, Toast.LENGTH_SHORT).show();
                 }
             }
             Iterator<Item> iteratorItem = constru.getItems().iterator();
@@ -71,7 +71,7 @@ public class ObserverConstructions {
                     recyclerView.setLayoutManager(new LinearLayoutManager(Session.getSession().getCtx()));
 
                     Session.getSession().getAdp().notifyDataSetChanged();
-                    Toast.makeText(Session.getSession().getCtx(), "Item de construction: " + i.getNom() + " détruit", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Session.getSession().getCtx(), R.string.obsv_message_construction_item_detruit +" " +  Controleur.getTrsanslateName(i.getNom())+ " "  +R.string.obsv_message_detruit, Toast.LENGTH_SHORT).show();
                 }
             }
         }

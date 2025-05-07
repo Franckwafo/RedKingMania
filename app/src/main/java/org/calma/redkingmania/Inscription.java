@@ -3,7 +3,6 @@ package org.calma.redkingmania;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,8 +45,8 @@ public class Inscription extends AppCompatActivity {
 
         Spinner spinner = findViewById(R.id.titreSpinner);
         List<String> titres = new ArrayList<>();
-        titres.add("Rois");
-        titres.add("Reine");
+        titres.add(this.getString(R.string.sing_titre_roi));
+        titres.add(this.getString(R.string.sing_titre_reine));
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, titres);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -69,13 +68,20 @@ public class Inscription extends AppCompatActivity {
             String passwordVal = password.getText().toString().trim();
             String confirmPasswordVal = confirmPassword.getText().toString().trim();
             String titreChoisi = titreSpinner.getSelectedItem().toString();
-            String titreValue = titreChoisi.equals("Rois") ? "m" : "f";
+            String titreValue = "";
+            if (titreChoisi.equals(this.getString(R.string.sing_titre_roi))) {
+                // C’est "Rois" ou sa traduction actuelle
+                titreValue = "m";
+            } else if (titreChoisi.equals(this.getString(R.string.sing_titre_reine))) {
+                // C’est "Reine" ou sa traduction actuelle
+                titreValue = "f";
+            }
 
             if (passwordVal.equals(confirmPasswordVal) && !passwordVal.isEmpty() && !usernameVal.isEmpty() && !pseudoVal.isEmpty()) {
                 Controleur.inscription(this,usernameVal,pseudoVal,passwordVal,titreValue);
-                Toast.makeText(this, "Infos valides !", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, this.getString(R.string.sing_confirme_msg), Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "Les mots de passe ne correspondent pas ou des champ sont invalide", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, this.getString(R.string.sing_errer_info), Toast.LENGTH_SHORT).show();
             }
         });
 

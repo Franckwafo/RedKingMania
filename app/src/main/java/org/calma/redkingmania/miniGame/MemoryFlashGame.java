@@ -32,8 +32,8 @@ public class MemoryFlashGame extends MiniGame {
         this.context = ctx;
         this.gameContainer = (FrameLayout) view;
 
-        setName("Mémoire Éclair 🍁");
-        setDescription("Mémorise les cases qui s’allument, puis retrouve-les !");
+        setName(Session.getSession().getCtx().getString(R.string.flach_memory));
+        setDescription(Session.getSession().getCtx().getString(R.string.flach_memory_describ));
     }
 
     @Override
@@ -118,7 +118,7 @@ public class MemoryFlashGame extends MiniGame {
 
     @Override
     public void win() {
-        Toast.makeText(context, "Mémoire parfaite !", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, Session.getSession().getCtx().getString(R.string.flach_memory_win_msg), Toast.LENGTH_SHORT).show();
         int gain = 100 + new Random().nextInt(30000);
 
         Session.getSession().getUser().setNbErable(Session.getSession().getUser().getNbErable() + gain);
@@ -131,7 +131,7 @@ public class MemoryFlashGame extends MiniGame {
 
     @Override
     public void loos() {
-        Toast.makeText(context, "Tu as oublié une case ! ", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, Session.getSession().getCtx().getString(R.string.flach_memory_loos_msg), Toast.LENGTH_SHORT).show();
         Session.getSession().getModal_game().closeModal();
     }
 }

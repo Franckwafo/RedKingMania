@@ -3,7 +3,6 @@ package org.calma.redkingmania.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -81,13 +80,13 @@ public class Controleur {
                     // Récupérer le résultat de l'API
 
                 } else {
-                    Toast.makeText(ctx, "Erreur de réponse", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ctx, R.string.ctrl_reponse_ereure, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResultResponse> call, Throwable t) {
-                Toast.makeText(ctx, "Erreur de communiction", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ctx, R.string.ctrl_comunication_erreure, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -115,7 +114,8 @@ public class Controleur {
 
                     // Afficher le résultat
                     if (rslt) {
-                        Toast.makeText(ctx, response.body().getmsg(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ctx, Controleur.getTrsanslateName(response.body().getmsg(),ctx), Toast.LENGTH_SHORT).show();
+
                         db.tokenSessionDao().inserer(new TokenSession(response.body().getToken()));
 
                         User user = Factory.buldUser(response.body().getUser());
@@ -128,16 +128,16 @@ public class Controleur {
                         ctx.startActivity(intent);
 
                     } else {
-                        Toast.makeText(ctx, response.body().getmsg(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ctx, Controleur.getTrsanslateName(response.body().getmsg(),ctx), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(ctx, "Erreur de réponse", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ctx,  R.string.ctrl_reponse_ereure, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResultResponse> call, Throwable t) {
-                Toast.makeText(ctx, "Erreur de communiction", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ctx, R.string.ctrl_comunication_erreure, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -170,7 +170,7 @@ public class Controleur {
 
                         // Afficher le résultat
                         if (rslt) {
-                            Toast.makeText(ctx, response.body().getmsg(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ctx, Controleur.getTrsanslateName(response.body().getmsg(),ctx), Toast.LENGTH_SHORT).show();
 
                             User user = Factory.buldUser(response.body().getUser());
                             ArrayList<Item> items = Factory.buldItems(response.body().getItems_sans_construction());
@@ -182,16 +182,16 @@ public class Controleur {
                             intent.putExtra("event", event);
                             ctx.startActivity(intent);
                         } else {
-                            Toast.makeText(ctx, response.body().getmsg(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ctx, Controleur.getTrsanslateName(response.body().getmsg(),ctx), Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(ctx, "Erreur de réponse", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ctx,  R.string.ctrl_reponse_ereure, Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<ResultResponse> call, Throwable t) {
-                    Toast.makeText(ctx, "Erreur de communiction", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ctx, R.string.ctrl_comunication_erreure, Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -225,16 +225,16 @@ public class Controleur {
                     if (rslt) {
 
                     } else {
-                        Toast.makeText(ctx, response.body().getmsg(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ctx, Controleur.getTrsanslateName(response.body().getmsg()), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(ctx, "Erreur de réponse", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ctx,  R.string.ctrl_reponse_ereure, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResultResponse> call, Throwable t) {
-                Toast.makeText(ctx, "Erreur de communiction", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ctx, R.string.ctrl_comunication_erreure, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -268,16 +268,16 @@ public class Controleur {
                     if (rslt) {
 
                     } else {
-                        Toast.makeText(ctx, response.body().getmsg(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ctx, Controleur.getTrsanslateName(response.body().getmsg()), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(ctx, "Erreur de réponse", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ctx, R.string.ctrl_reponse_ereure, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResultResponse> call, Throwable t) {
-                Toast.makeText(ctx, "Erreur de communiction", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ctx, R.string.ctrl_comunication_erreure, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -321,18 +321,18 @@ public class Controleur {
                             }
                         });
 
-                        Toast.makeText(ctx, "Boutique chargée !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ctx, R.string.ctrl_boutique_ouvert, Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(ctx, result.getmsg(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(ctx, "Erreur de réponse de la boutique", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ctx, R.string.ctrl_reponse_ereure, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResultResponse> call, Throwable t) {
-                Toast.makeText(ctx, "Erreur de communication avec la boutique", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ctx, R.string.ctrl_comunication_erreure, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -366,13 +366,13 @@ public class Controleur {
                         Toast.makeText(ctx, result.getmsg(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(ctx, "Erreur de réponse de la boutique", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ctx, R.string.ctrl_reponse_ereure, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResultResponse> call, Throwable t) {
-                Toast.makeText(ctx, "Erreur de communication avec la boutique", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ctx, R.string.ctrl_comunication_erreure, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -406,13 +406,13 @@ public class Controleur {
                         Toast.makeText(ctx, result.getmsg(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(ctx, "Erreur de réponse de la boutique", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ctx, R.string.ctrl_reponse_ereure, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResultResponse> call, Throwable t) {
-                Toast.makeText(ctx, "Erreur de communication avec la boutique", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ctx, R.string.ctrl_comunication_erreure, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -436,25 +436,27 @@ public class Controleur {
                     ResultResponse result = response.body();
 
                     if (result.getResult()){
-                        Toast.makeText(ctx, result.getmsg(), Toast.LENGTH_SHORT).show();
                         Context ctx = Session.getSession().getCtx();
                         Intent intent = new Intent(ctx, Login.class);
                         intent.putExtra("event", "scan"); // Ajoute l'extra ici
+
+                        Session.getSession().stopSong();
+
                         ctx.startActivity(intent);
                         ((Activity) ctx).finish();
                     }else {
-                        Toast.makeText(ctx, result.getmsg(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ctx, Controleur.getTrsanslateName(result.getmsg()), Toast.LENGTH_SHORT).show();
                     }
 
 
                 } else {
-                    Toast.makeText(ctx, "Erreur de réponse", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ctx, R.string.ctrl_reponse_ereure, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResultResponse> call, Throwable t) {
-                Toast.makeText(ctx, "Erreur de communiction", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ctx, R.string.ctrl_comunication_erreure, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -484,20 +486,20 @@ public class Controleur {
 
                     // Afficher le résultat
                     if (rslt) {
-                        Toast.makeText(ctx, response.body().getmsg(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ctx, Controleur.getTrsanslateName(response.body().getmsg()), Toast.LENGTH_SHORT).show();
                         ((Activity) ctx).finish();
 
                     } else {
-                        Toast.makeText(ctx, response.body().getmsg(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ctx, Controleur.getTrsanslateName(response.body().getmsg()), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(ctx, "Erreur de réponse", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ctx, R.string.ctrl_reponse_ereure, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResultResponse> call, Throwable t) {
-                Toast.makeText(ctx, "Erreur de communiction", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ctx, R.string.ctrl_comunication_erreure, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -510,11 +512,11 @@ public class Controleur {
 
         switch (input) {
             case "e":
-                return "Erable";
+                return Session.getSession().getCtx().getString(R.string.ctrl_unit_erable);
             case "c":
-                return "Cristale";
+                return Session.getSession().getCtx().getString(R.string.ctrl_unit_cristale);
             case "b":
-                return "Bois";
+                return Session.getSession().getCtx().getString(R.string.ctrl_unit_bois);
             default:
                 return "Inconnu";
         }
@@ -526,9 +528,9 @@ public class Controleur {
 
         switch (lastChar) {
             case 'p':
-                return "Production";
+                return Session.getSession().getCtx().getString(R.string.ctrl_type_production);
             case 'c':
-                return "Auto Clicker";
+                return Session.getSession().getCtx().getString(R.string.ctrl_auto_click);
             default:
                 return "Inconnu";
         }
@@ -540,9 +542,9 @@ public class Controleur {
 
         switch (lastChar) {
             case 'p':
-                return "Ressource + " + i.getNbEffet();
+                return Session.getSession().getCtx().getString(R.string.ctrl_lable_ressource)+" " + i.getNbEffet();
             case 'c':
-                return "Click par " + i.getNbEffet()+ " s";
+                return Session.getSession().getCtx().getString(R.string.ctrl_lable_click)+" "+ i.getNbEffet()+ " s";
             default:
                 return "Inconnu";
         }
@@ -554,9 +556,9 @@ public class Controleur {
 
         switch (lastChar) {
             case 'p':
-                return "Ressource + " + a.getNbProduction();
+                return Session.getSession().getCtx().getString(R.string.ctrl_lable_ressource)+" "  + a.getNbProduction();
             case 'c':
-                return "Click par " + a.getNbProduction()+ " s";
+                return Session.getSession().getCtx().getString(R.string.ctrl_lable_click)+" "+ a.getNbProduction()+ " s";
             default:
                 return "Inconnu";
         }
@@ -619,7 +621,7 @@ public class Controleur {
 
         long seconds = TimeUnit.MILLISECONDS.toSeconds(diffInMillis);
 
-        return String.format("%d j, %02d h, %02d min, %02d s", days, hours, minutes, seconds);
+        return String.format("%d "+Session.getSession().getCtx().getString(R.string.ctrl_sufix_j)+", %02d h, %02d min, %02d s", days, hours, minutes, seconds);
     }
 
     public static int calculerPrix(int effect, char type) {
@@ -716,10 +718,10 @@ public class Controleur {
     public static void SetName(TextView pp, String sex,String name){
         switch (sex){
             case "m":
-                pp.setText("Roi " + name);
+                pp.setText(Session.getSession().getCtx().getString(R.string.sing_titre_roi)+" " + name);
                 break;
             case "f":
-                pp.setText("Reine " + name);
+                pp.setText(Session.getSession().getCtx().getString(R.string.sing_titre_reine)+" " + name);
                 break;
             default:
                 pp.setText("" + name);
@@ -730,9 +732,9 @@ public class Controleur {
     public static String GetName(String sex,String name){
         switch (sex){
             case "m":
-                return  "Roi " + name;
+                return  Session.getSession().getCtx().getString(R.string.sing_titre_roi) + " " + name;
             case "f":
-                return "Reine " + name;
+                return Session.getSession().getCtx().getString(R.string.sing_titre_reine) + " " + name;
             default:
                 return "" + name;
         }
@@ -766,5 +768,21 @@ public class Controleur {
             nombre /= 10;
         }
         return nombre;
+    }
+
+
+    public static String getTrsanslateName(String identifiant){
+        Context ctx = Session.getSession().getCtx();
+        int resId = ctx.getResources().getIdentifier(identifiant, "string", ctx.getPackageName());
+
+        return ctx.getString(resId);
+
+    }
+
+    public static String getTrsanslateName(String identifiant,Context ctx){
+        int resId = ctx.getResources().getIdentifier(identifiant, "string", ctx.getPackageName());
+
+        return ctx.getString(resId);
+
     }
 }

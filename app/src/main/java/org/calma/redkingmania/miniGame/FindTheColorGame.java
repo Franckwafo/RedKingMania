@@ -33,8 +33,8 @@ public class FindTheColorGame extends MiniGame {
         this.context = ctx;
         this.gameContainer = (FrameLayout) view;
 
-        setName("Trouve la couleur !");
-        setDescription("Clique sur le bouton de la bonne couleur !");
+        setName(Session.getSession().getCtx().getString(R.string.find_color));
+        setDescription(Session.getSession().getCtx().getString(R.string.find_color_describ));
     }
 
     @Override
@@ -51,12 +51,16 @@ public class FindTheColorGame extends MiniGame {
         buttons.add(gameView.findViewById(R.id.color_btn_3));
 
         // Couleurs et noms
-        String[] colorNames = {"Rouge", "Vert", "Bleu"};
-        int[] colors = {Color.RED, Color.GREEN, Color.BLUE};
+        String[] colorNames = {Session.getSession().getCtx().getString(R.string.find_color_red),
+                Session.getSession().getCtx().getString(R.string.find_color_green),
+                Session.getSession().getCtx().getString(R.string.find_color_blue)};
+        int[] colors = {Session.getSession().getCtx().getColor(R.color.c_red),
+                Session.getSession().getCtx().getColor(R.color.c_green),
+                Session.getSession().getCtx().getColor(R.color.c_blue)};
         int correctIndex = new Random().nextInt(3);
 
         targetColorName = colorNames[correctIndex];
-        instruction.setText("Clique sur le bouton " + targetColorName + " !");
+        instruction.setText(Session.getSession().getCtx().getString(R.string.find_color_indication) + targetColorName + " !");
 
         // Mélanger les couleurs entre les boutons
         List<Integer> colorList = new ArrayList<>();
@@ -94,7 +98,7 @@ public class FindTheColorGame extends MiniGame {
 
     @Override
     public void win() {
-        Toast.makeText(context, "Bien joué !", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, Session.getSession().getCtx().getString(R.string.find_color_win_msg), Toast.LENGTH_SHORT).show();
         scoreBonus = new Random().nextInt(15000) + 50;
 
         Session.getSession().getUser().setNbBois(Session.getSession().getUser().getNbBois() + scoreBonus);
@@ -108,7 +112,7 @@ public class FindTheColorGame extends MiniGame {
 
     @Override
     public void loos() {
-        Toast.makeText(context, "Mauvaise couleur ou trop tard !", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, Session.getSession().getCtx().getString(R.string.find_color_loose_msg), Toast.LENGTH_SHORT).show();
         Session.getSession().getModal_game().closeModal();
     }
 }

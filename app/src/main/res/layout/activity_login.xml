@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/rounded_input"
-                android:hint="Nom d'utilisateur"
+                android:hint="@string/login_placeHolder_name_user"
                 android:inputType="text"
                 android:textColorHint="#80000000"
                 android:padding="12dp" />
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/rounded_input"
-                android:hint="Mot de passe"
+                android:hint="@string/login_placeHolder_pswd"
                 android:inputType="textPassword"
                 android:padding="12dp"
                 android:textColorHint="#80000000"
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:backgroundTint="#AF2525"
-                android:text="Se connecter"
+                android:text="@string/login_btn_connect"
                 android:textColor="#FFFFFF" />
 
             <Button
@@ -89,7 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#AE2525"
-                android:text="S'inscrire"
+                android:text="@string/login_btn_sing_up"
                 android:textColor="#FFFFFF"/>
 
             <TextView
@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                android:text="Classement Des royaumes"
+                android:text="@string/login_classement"
                 android:textColor="#1976D2"
                 android:textStyle="bold" />
 

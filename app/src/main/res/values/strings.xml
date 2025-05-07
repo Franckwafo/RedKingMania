@@ -1,3 +1,183 @@
 <resources>
-    <string name="app_name">RedKingMania</string>
+    <string name="app_name" translatable="false">Red King Mania</string>
+    <string name="login_placeHolder_name_user">User name</string>
+    <string name="login_placeHolder_pswd">Password</string>
+    <string name="login_btn_connect">Login</string>
+    <string name="login_btn_sing_up">Sign up</string>
+    <string name="login_classement">Kingdoms classification</string>
+    <string name="sing_user_name">User name</string>
+    <string name="sing_pseudo">Nickname</string>
+    <string name="sing_pswd">Password</string>
+    <string name="sing_confirm">Confirm password</string>
+    <string name="sing_label_title">Title</string>
+    <string name="sing_sing_up">Sign up</string>
+    <string name="sing_titre_roi">King</string>
+    <string name="sing_titre_reine">Queen</string>
+    <string name="sing_confirme_msg">Valid info!</string>
+    <string name="sing_errer_info">Passwords do not match or fields are invalid</string>
+    <string name="main_salutation">Greetings</string>
+    <string name="main_erreure_session">Session error :</string>
+    <string name="session_mouve_impossible">Impossible movement</string>
+    <string name="ctrl_reponse_ereure">Answer error</string>
+    <string name="ctrl_comunication_erreure">Communication error</string>
+    <string name="ctrl_boutique_ouvert">Open store!</string>
+    <string name="ctrl_unit_erable">Maple</string>
+    <string name="ctrl_unit_bois">Wood</string>
+    <string name="ctrl_unit_cristale">Crystal</string>
+    <string name="ctrl_type_production" translatable="false">Production</string>
+    <string name="ctrl_auto_click" translatable="false">Auto Clicker</string>
+    <string name="ctrl_lable_ressource">Resource +</string>
+    <string name="ctrl_lable_click">Click by</string>
+    <string name="ctrl_sufix_j">d</string>
+    <string name="user_level">Level :</string>
+    <string name="user_level_up_info">Level up for</string>
+    <string name="user_level_up_info_next">of each unit</string>
+    <string name="user_level_up_erreur" translatable="false">Level UP Impossible</string>
+    <string name="shop_action_erreur">Buy impossible!!!</string>
+    <string name="shop_item_confirmation" translatable="false">Item</string>
+    <string name="shop_confirmation_next">Buy !!!</string>
+    <string name="shop_construction_confirmation" translatable="false">Construction</string>
+    <string name="obsv_message_detruit">destroyed</string>
+    <string name="obsv_message_construction_item_detruit">Construction item:</string>
+    <string name="modal_forge_describ">Select an object to extend its lifetime for</string>
+    <string name="modal_forge_describ_next">of wood</string>
+    <string name="click_time_game">Click at the right moment!</string>
+    <string name="click_time_game_describ_1">Click between</string>
+    <string name="click_timer_game_describ_2">and</string>
+    <string name="click_time_game_describ_3">at the right time to win!</string>
+    <string name="click_time_game_win_msg">Bravo, perfect timing!</string>
+    <string name="click_time_game_lose_msg">Missed! Bad timing...</string>
+    <string name="color_reflex">Color reflex!</string>
+    <string name="color_reflex_describ">Click when the button turns GREEN!</string>
+    <string name="color_reflex_win_msg">Perfect reflex</string>
+    <string name="color_reflex_loose_msg">Trop tôt !</string>
+    <string name="find_color">Find the color!</string>
+    <string name="find_color_describ">Click on the right color button!</string>
+    <string name="find_color_red">Red</string>
+    <string name="find_color_blue">Blue</string>
+    <string name="find_color_green">Green</string>
+    <string name="find_color_indication">Click on the</string>
+    <string name="find_color_win_msg">Well done!</string>
+    <string name="find_color_loose_msg">Wrong color or too late!</string>
+    <string name="flach_memory">Flash Memory 🍁</string>
+    <string name="flach_memory_describ">Memorize the boxes that light up, then find them!</string>
+    <string name="flach_memory_win_msg">Perfect memory!</string>
+    <string name="flach_memory_loos_msg">You missed a spot!</string>
+    <string name="number_game">Remember the number!</string>
+    <string name="number_game_describ">Memorize a number and retype it correctly.</string>
+    <string name="number_game_indication">What was the number ?</string>
+    <string name="number_game_win_msg">Good memory!</string>
+    <string name="number_game_loss_msg">Lost! Wrong number...</string>
+    <string name="odd_game">Find the intruder!</string>
+    <string name="odd_game_describ">Spot the different emoticon among the others before 5 seconds!</string>
+    <string name="odd_game_win_msg">Well done! You\'ve found the odd one out 😎</string>
+    <string name="odd_game_loos_msg">Oh no! It wasn\'t the right one 😢</string>
+    <string name="tap_game">Fast Spam !</string>
+    <string name="tap_game_describ">Press the button quickly to win!</string>
+    <string name="tap_game_indication" translatable="false">Clicks :</string>
+    <string name="tap_game_win_msg">You clicked fast enough!</string>
+    <string name="tap_game_loss_msg">Too slow! Try again...</string>
+    <string name="modal_type" translatable="false">Type :</string>
+    <string name="modal_production" translatable="false">Production : +</string>
+    <string name="modal_effect" translatable="false">Effect</string>
+    <string name="modal_valid_msg">Valid for</string>
+    <string name="click_tim_game_l_description">Click at the right moment!</string>
+    <string name="click_time_btn">I click!</string>
+    <string name="color_game_l_indication">Click on the right color!</string>
+    <string name="memory_game_input_lable">Enter number</string>
+    <string name="memory_game_btn">Confirm</string>
+    <string name="reflex_color_game_l_indication">Wait for the GREEN</string>
+    <string name="spame_game_l_indication" translatable="false">CLICK!</string>
+    <string name="forge_lable" translatable="false">Forge</string>
+    <string name="shop_lable">Construction and item store</string>
+    <string name="shop_title">Store</string>
+    <string name="user_btn_retour">Back</string>
+    <string name="user_btn_deco">Disconnect</string>
+    <string name="regle_title">Welcome, Sovereign Maple</string>
+    <string name="regle_1">🧱 1. Build buildings using maple crystals. Each building allows you to produce a precious resource: wood, maple or maple crystal.</string>
+    <string name="regle_2">👆 2. Click frantically on your buildings to produce more! Some items even click automatically for you.</string>
+    <string name="regle_3">🧰 3. Use items to boost your buildings. Each item has 4 slots for upgrades. Hold the item to assign or remove it.</string>
+    <string name="regle_4">🔧 4. The elements are wearing out! Go to the forge to repair them with wood. But beware, craftsmen are fickle, and the cost depends on the hour.</string>
+    <string name="regle_5">🗺️ 5. Explore the map to discover other kingdoms and obtain bonuses via mini-games. Sometimes you\'ll find precious treasures! And also the magic mirror ‘The camera allows you to obtain gifts, by scanning the inked qr codes’.</string>
+    <string name="regle_6">🎉 6. When you\'re ready, level up! All your buildings are repaired, a party breaks out in the kingdom, and you can leave stronger.</string>
+    <string name="btn_annuler">Cancel</string>
+    <string name="btn_fermer">Close</string>
+
+    <string name="constru_etendue_sapins">Fir Grove</string>
+    <string name="constru_filons_cristaux">Crystal Vein</string>
+    <string name="constru_marmite_erable">Maple Cauldron</string>
+    <string name="constru_coffre_royal">Royal Chest</string>
+    <string name="constru_clairiere_bois">Woodland Clearing</string>
+    <string name="constru_clairiere_erable">Maple Clearing</string>
+    <string name="constru_gisement_cristaux">Crystal Deposit</string>
+    <string name="constru_atelier_erable">Maple Workshop</string>
+    <string name="constru_atelier_sculpture">Woodcarving Workshop</string>
+    <string name="constru_chaudron_erable">Maple Boiler</string>
+    <string name="constru_mine_cristal">Crystal Mine</string>
+    <string name="constru_foret">Forest</string>
+
+
+    <string name="item_distillateur_traditionnel">Traditional Distiller</string>
+    <string name="item_arome">Aroma</string>
+    <string name="item_maitre_metiers">Master of Trades</string>
+    <string name="item_assortiment_raffine">Refined Assortment</string>
+    <string name="item_aventurier">Adventurer</string>
+    <string name="item_bucheron">Lumberjack</string>
+    <string name="item_chapeau">Hat</string>
+    <string name="item_maitre_fourneaux">Master Chef</string>
+    <string name="item_chemise_bucheron">Lumberjack Shirt</string>
+    <string name="item_compote">Compote</string>
+    <string name="item_equipement_aventurier">Adventurer\'s Gear</string>
+    <string name="item_fiole">Vial</string>
+    <string name="item_louche_bronze">Bronze Ladle</string>
+    <string name="item_louche_or">Gold Ladle</string>
+    <string name="item_magicien">Wizard</string>
+    <string name="item_boite_maturation">Maturation Box</string>
+    <string name="item_mineur">Miner</string>
+    <string name="item_modele_bois">Wooden Model</string>
+    <string name="item_mortier_or">Golden Mortar</string>
+    <string name="item_ouvrier">Worker</string>
+    <string name="item_pioche">Pickaxe</string>
+    <string name="item_recette">Recipe</string>
+    <string name="item_sorcier">Sorcerer</string>
+    <string name="item_tourtiere">Meat Pie</string>
+    <string name="item_tarte">Pie</string>
+    <string name="item_valkyrie">Valkyrie</string>
+    <string name="item_cuillere_enchante">Enchanted Spoon</string>
+    <string name="item_hache_fer">Iron Axe</string>
+    <string name="item_sucre">Sugar</string>
+    <string name="item_pioche_enchante">Enchanted Pickaxe</string>
+    <string name="item_epice_volcanique">Volcanic Spice</string>
+
+
+    <string name="error_missing_fields">Missing fields</string>
+    <string name="error_username_taken">Username already taken</string>
+    <string name="error_exception">Internal error, please try again</string>
+    <string name="success_user_created">User successfully created with constructions</string>
+
+    <string name="error_missing_idPropriete">Missing \'idPropriete\' parameter.</string>
+    <string name="success_property_deleted">Property successfully deleted.</string>
+    <string name="error_property_not_found">No property found with this ID.</string>
+    <string name="error_deleting_property">Error while deleting property.</string>
+
+    <string name="error_connection_mysql">Error connecting to MySQL.</string>
+
+
+
+    <string name="error_connection">Database connection error.</string>
+    <string name="resource_added">Resource added successfully.</string>
+    <string name="no_items_available">No items available.</string>
+    <string name="item_assigned">Item assigned successfully.</string>
+    <string name="no_constructions_available">No constructions available.</string>
+    <string name="construction_assigned">Construction assigned successfully.</string>
+    <string name="effect_not_supported">Effect not supported.</string>
+    <string name="qr_code_not_found">QR code not found.</string>
+    <string name="missing_parameters">Missing parameters (id_qr or id_user).</string>
+    <string name="valid_user_invalide">Invalid login or password</string>
+    <string name="valid_succes">Successful authentication</string>
+    <string name="token_expired">Token expired</string>
+    <string name="token_not_found">Token not found</string>
+    <string name="tokken_valid">Valid token</string>
+    <string name="mini_game_dev_msg">Function unavailable</string>
+
 </resources>

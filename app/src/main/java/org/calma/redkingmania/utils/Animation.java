@@ -63,6 +63,8 @@ public class Animation {
             }, delay);
         }
 
+        Song.explodSong(Session.getSession().getCtx());
+
         // Nettoyage après l’animation complète
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             container.removeAllViews();
@@ -75,6 +77,7 @@ public class Animation {
         AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.animator_pulse);
         animatorSet.setTarget(view);
         animatorSet.start();
+        Song.clickSong(context);
     }
 
     public static void explodeErableAnim(View containerView,int img) {

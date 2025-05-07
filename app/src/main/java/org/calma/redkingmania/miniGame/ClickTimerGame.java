@@ -48,8 +48,8 @@ public class ClickTimerGame extends MiniGame {
                 break;
         }
 
-        setName("Clique au bon moment !");
-        setDescription("Cliquez entre "+ minTime+" et " +maxTime + " au bon moment pour gagner !");
+        setName(Session.getSession().getCtx().getString(R.string.click_time_game));
+        setDescription(Session.getSession().getCtx().getString(R.string.click_time_game_describ_1)+" "+ minTime+" " +Session.getSession().getCtx().getString(R.string.click_timer_game_describ_2)+" "+maxTime + " "+Session.getSession().getCtx().getString(R.string.click_time_game_describ_3));
     }
 
     @Override
@@ -111,7 +111,7 @@ public class ClickTimerGame extends MiniGame {
 
     @Override
     public void win() {
-        Toast.makeText(context, "Bravo, parfait timing !", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, R.string.click_time_game_win_msg, Toast.LENGTH_SHORT).show();
         Random random = new Random();
 
         // Générer un nombre flottant entre min et max
@@ -132,7 +132,7 @@ public class ClickTimerGame extends MiniGame {
 
     @Override
     public void loos() {
-        Toast.makeText(context, "Raté ! Mauvais timing...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, R.string.click_time_game_lose_msg, Toast.LENGTH_SHORT).show();
         Session.getSession().getModal_game().closeModal();
     }
 }
