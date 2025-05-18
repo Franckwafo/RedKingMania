@@ -363,7 +363,7 @@ public class Controleur {
 
                         //
                     } else {
-                        Toast.makeText(ctx, result.getmsg(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ctx, Controleur.getTrsanslateName(result.getmsg()), Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(ctx, R.string.ctrl_reponse_ereure, Toast.LENGTH_SHORT).show();
@@ -403,7 +403,7 @@ public class Controleur {
 
                         // Si nécessaire, affiche un message de succès ou effectue d'autres actions
                     } else {
-                        Toast.makeText(ctx, result.getmsg(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ctx, Controleur.getTrsanslateName(result.getmsg()), Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(ctx, R.string.ctrl_reponse_ereure, Toast.LENGTH_SHORT).show();

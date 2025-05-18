@@ -25,8 +25,7 @@ public class Article_item extends Article_shop {
             Toast.makeText(ctx, R.string.shop_action_erreur, Toast.LENGTH_SHORT).show();
         }
         else {
-            System.out.println("Item "+this.nom+" Acheter !!!" );
-            Toast.makeText(ctx, R.string.shop_item_confirmation+" "+this.nom+" "+R.string.shop_confirmation_next, Toast.LENGTH_SHORT).show();
+//            System.out.println("Item "+this.nom+" Acheter !!!" );
             Session.getSession().getUser().setNbErable(Session.getSession().getUser().getNbErable()-this.prix);
 
             TextView cpt = ((Activity) ctx).findViewById(R.id.cpt_erable);

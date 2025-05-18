@@ -63,6 +63,12 @@ public class Login extends AppCompatActivity {
 
         userName = findViewById(R.id.nomUtilisateur);
         pswd = findViewById(R.id.motDePasse);
+
+        if (savedInstanceState != null) {
+            userName.setText(savedInstanceState.getString("username"));
+            pswd.setText(savedInstanceState.getString("pswd"));
+        }
+
         logButon = findViewById(R.id.btnSeConnecter);
         inscription = findViewById(R.id.btnInscrire);
         link_classement = findViewById(R.id.classementLink);
@@ -100,5 +106,12 @@ public class Login extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("username", userName.getText().toString());
+        outState.putString("pswd", pswd.getText().toString());
     }
 }

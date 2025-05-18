@@ -201,7 +201,6 @@ public class Session implements Serializable {
     public void moveItem(){
         if (this.construSelected!=null && this.itemSelected!=null){
             if (this.construSelected.getItems().size()<4 && construSelected.isItemValide(itemSelected)){
-                Toast.makeText(Session.getSession().getCtx(), this.construSelected.getName(), Toast.LENGTH_SHORT).show();
 
                 this.items.remove(this.itemSelected);
                 this.construSelected.getItems().add(this.itemSelected);
@@ -220,7 +219,6 @@ public class Session implements Serializable {
                 updateItems();
                 updateConstructions();
             }else {
-                Toast.makeText(Session.getSession().getCtx(), R.string.session_mouve_impossible, Toast.LENGTH_SHORT).show();
                 this.setItemRemoveConstruSelected(null);
                 this.setRemoveConstruSelected(null);
                 this.setItemSelected(null);

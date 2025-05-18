@@ -10,6 +10,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -21,6 +22,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Inscription extends AppCompatActivity {
+
+    private EditText username ;
+    private EditText pseudo ;
+    private EditText password ;
+    private EditText confirmPassword ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +62,18 @@ public class Inscription extends AppCompatActivity {
 
         Button btnInscrire = findViewById(R.id.btnValiderInscription);
 
-        EditText username = findViewById(R.id.username);
-        EditText pseudo = findViewById(R.id.pseudo);
-        EditText password = findViewById(R.id.password);
-        EditText confirmPassword = findViewById(R.id.confirmPassword);
+        username = findViewById(R.id.username);
+        pseudo = findViewById(R.id.pseudo);
+        password = findViewById(R.id.password);
+        confirmPassword = findViewById(R.id.confirmPassword);
+
+        if (savedInstanceState != null) {
+            username.setText(savedInstanceState.getString("KEY_USERNAME", ""));
+            pseudo.setText(savedInstanceState.getString("KEY_PSEUDO", ""));
+            password.setText(savedInstanceState.getString("KEY_PASSWORD", ""));
+            confirmPassword.setText(savedInstanceState.getString("KEY_CONFIRM_PASSWORD", ""));
+        }
+
         Spinner titreSpinner = findViewById(R.id.titreSpinner);
 
         btnInscrire.setOnClickListener(v -> {
@@ -85,5 +99,15 @@ public class Inscription extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putString("KEY_USERNAME", username.getText().toString());
+        outState.putString("KEY_PSEUDO", pseudo.getText().toString());
+        outState.putString("KEY_PASSWORD", password.getText().toString());
+        outState.putString("KEY_CONFIRM_PASSWORD", confirmPassword.getText().toString());
     }
 }
